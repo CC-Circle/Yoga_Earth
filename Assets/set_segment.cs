@@ -7,6 +7,9 @@ public class set_segment : MonoBehaviour
     public GameObject cube_obj;
     public GameObject branch_obj;
     public GameObject branch_obj2;
+
+    public GameObject tree_foliage;
+
     float add_value = 0.29f;
 
     public static Vector3 top_position;
@@ -17,6 +20,8 @@ public class set_segment : MonoBehaviour
     GameObject obj;
     GameObject obj2;
     GameObject obj3;
+
+    GameObject obj_tree_foliage;
 
     private Vector3 next_position;
 
@@ -54,18 +59,21 @@ public class set_segment : MonoBehaviour
             branch_count++;
             if(branch_count %5 == 0)
             {
-                Vector3 desiredRotation = new Vector3(-90f, 0f, 0f);
+                //Vector3 desiredRotation = new Vector3(-90f, 0f, 0f);
                 //obj2 = Instantiate(branch_obj, new Vector3(next_position.x - 0.5f, transform.position.y + y_value - 0.2f, transform.position.z-0.5f), Quaternion.identity);
                 // Quaternion.Euler を使って回転角度を指定
                 //obj2.transform.rotation = Quaternion.Euler(desiredRotation);
 
 
-                desiredRotation = new Vector3(90f, 0f, 0f);
+                //desiredRotation = new Vector3(90f, 0f, 0f);
                 //obj3 = Instantiate(branch_obj2, new Vector3(next_position.x - 0.5f, transform.position.y + y_value - 0.2f, transform.position.z+0.5f), Quaternion.identity);
                 // Quaternion.Euler を使って回転角度を指定
                 //obj3.transform.rotation = Quaternion.Euler(desiredRotation);
 
 
+                Vector3 desiredRotation = new Vector3(0f, 0f, 0f);
+                obj_tree_foliage = Instantiate(tree_foliage, new Vector3(next_position.x + 0.475f, transform.position.y + y_value - 0.4f, transform.position.z), Quaternion.identity);
+                obj_tree_foliage.transform.rotation = Quaternion.Euler(desiredRotation);
             }
         }
     }

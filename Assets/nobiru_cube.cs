@@ -17,6 +17,8 @@ public class nobiru_cube : MonoBehaviour
     [SerializeField] float left_limit = -2.0f;
     [SerializeField] float right_limit = 2.0f;
 
+    public static float x_angle;
+
     void Start()
     {
         mesh = GetComponent<MeshFilter>().mesh;
@@ -87,7 +89,7 @@ public class nobiru_cube : MonoBehaviour
                 // Y座標が現在の高さより高い頂点は、上に移動し、X方向にも移動
                 float yOffset = vertices[i].y - currentHeight;
                 float xOffset = yOffset * Mathf.Tan(growthAngle * Mathf.Deg2Rad);
-                
+                x_angle = growthAngle * growthDirection;
 
 
                 // X方向の移動方向を調整
