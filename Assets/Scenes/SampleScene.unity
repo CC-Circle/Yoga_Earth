@@ -2655,6 +2655,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1854217191}
   - component: {fileID: 1854217192}
+  - component: {fileID: 1854217193}
   m_Layer: 0
   m_Name: GameObject (1)
   m_TagString: Untagged
@@ -2692,6 +2693,18 @@ MonoBehaviour:
   cube_obj: {fileID: 2986815384033673886, guid: e8dfaf162af59407487da7270d35d5d4, type: 3}
   branch_obj: {fileID: 550971444049018917, guid: 6440e7de773864f72b189d6d91fa4ed3, type: 3}
   branch_obj2: {fileID: 550971444049018917, guid: 0cb6be25fac3f40d2ab768c97eb620f0, type: 3}
+--- !u!114 &1854217193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854217190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001adbd18236449739ff1481df4f7447, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!850595691 &1877351756
 LightingSettings:
   m_ObjectHideFlags: 0
