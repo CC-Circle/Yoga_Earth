@@ -14,7 +14,7 @@ public class ObjectColliderManager : MonoBehaviour
             if (obj.name == "Cylinder (1)(Clone)" && !createdObjects.Contains(obj))
             {
                 createdObjects.Add(obj);
-                Debug.Log("Added object: " + obj.name); // デバッグ用
+                // Debug.Log("Added object: " + obj.name); // デバッグ用
             }
         }
         
@@ -53,7 +53,7 @@ public class ObjectColliderManager : MonoBehaviour
         Debug.Log("Objects in list: " + createdObjects.Count); // リストの数を表示
         for (int i = 0; i < createdObjects.Count; i++)
         {
-            Debug.Log("Object " + i + ": " + createdObjects[i].name); // 各オブジェクトの名前を表示
+            // Debug.Log("Object " + i + ": " + createdObjects[i].name); // 各オブジェクトの名前を表示
         }
     }
 }
