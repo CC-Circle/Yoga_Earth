@@ -50,7 +50,7 @@ public class ObjectColliderManager : MonoBehaviour
 
     void DebugObjectsList()
     {
-        Debug.Log("Objects in list: " + createdObjects.Count); // リストの数を表示
+        // Debug.Log("Objects in list: " + createdObjects.Count); // リストの数を表示
         for (int i = 0; i < createdObjects.Count; i++)
         {
             // Debug.Log("Object " + i + ": " + createdObjects[i].name); // 各オブジェクトの名前を表示
