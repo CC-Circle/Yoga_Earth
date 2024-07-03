@@ -16,9 +16,11 @@ public class nobiru_cube : MonoBehaviour
 
     [SerializeField] float left_limit = -2.0f;
     [SerializeField] float right_limit = 2.0f;
+    [SerializeField] bool is_key = false;
 
     void Start()
     {
+        is_key = set_segment.is_key_pub;
         mesh = GetComponent<MeshFilter>().mesh;
         vertices = mesh.vertices;
         
@@ -31,65 +33,69 @@ public class nobiru_cube : MonoBehaviour
         if (currentHeight < growthLimit)
         {
 
-            
-
-            // 十字キー入力による成長方向の制御
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (is_key == true)
             {
 
-                if (set_segment.top_position.x < right_limit)
+                // 十字キー入力による成長方向の制御
+                if (Input.GetKey(KeyCode.RightArrow))
                 {
-                    growthDirection = 1.0f;
+
+                    if (set_segment.top_position.x < right_limit)
+                    {
+                        growthDirection = 1.0f;
+                    }
+                    else
+                    {
+                        growthDirection = 0.0f;
+                    }
+
+
+                }
+                else if (Input.GetKey(KeyCode.LeftArrow))
+                {
+
+                    if (set_segment.top_position.x > left_limit)
+                    {
+                        growthDirection = -1.0f;
+                    }
+                    else
+                    {
+                        growthDirection = 0.0f;
+                    }
+
                 }
                 else
                 {
-                    growthDirection = 0.0f;
+                    //growthDirection = 0.0f;
+
+                    if (set_segment.top_position.x > right_limit)
+                    {
+                        growthDirection = 0.0f;
+                    }
+
+                    if (set_segment.top_position.x < left_limit)
+                    {
+                        growthDirection = 0.0f;
+                    }
                 }
-                
 
             }
-            else if (Input.GetKey(KeyCode.LeftArrow))
+            else
             {
-
-                if (set_segment.top_position.x > left_limit)
+                growthDirection = (Receive_Data.x_zahyo - 50) * set_segment.grow_speed_pub;
+                if (growthDirection > 0)
                 {
-                    growthDirection = -1.0f;
+                    if (set_segment.top_position.x > right_limit)
+                    {
+                        growthDirection = 0.0f;
+                    }
                 }
                 else
                 {
-                    growthDirection = 0.0f;
-                }
-                
-            }
-            else
-            {
-                //growthDirection = 0.0f;
-
-                if (set_segment.top_position.x > right_limit)
-                {
-                    growthDirection = 0.0f;
-                }
-
-                if (set_segment.top_position.x < left_limit)
-                {
-                    growthDirection = 0.0f;
-                }
-            }
-
-
-            growthDirection = (Receive_Data.x_zahyo - 50) * 0.2f;
-            if(growthDirection > 0)
-            {
-                if (set_segment.top_position.x > right_limit)
-                {
-                    growthDirection = 0.0f;
-                }
-            }
-            else
-            {
-                if (set_segment.top_position.x < left_limit)
-                {
-                    growthDirection = 0.0f;
+                    if (set_segment.top_position.x < left_limit)
+                    {
+                        growthDirection = 0.0f;
+                    }
                 }
             }
 
