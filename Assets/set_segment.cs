@@ -3,10 +3,15 @@ using System.Collections;
 
 public class set_segment : MonoBehaviour
 {
+    [SerializeField] float grow_speed = 0.2f;
+    public static float grow_speed_pub;
+
+    [SerializeField] bool is_key = false;
+    public static bool is_key_pub;
 
     public GameObject cube_obj;
-    public GameObject branch_obj;
-    public GameObject branch_obj2;
+    //public GameObject branch_obj;
+    //public GameObject branch_obj2;
     float add_value = 0.29f;
 
     public static Vector3 top_position;
@@ -24,6 +29,9 @@ public class set_segment : MonoBehaviour
 
     void Start()
     {
+        
+        grow_speed_pub = grow_speed;
+        is_key_pub = is_key;
         obj = Instantiate(cube_obj, new Vector3(0,0,0), Quaternion.identity);
 
         // コルーチンを開始
@@ -54,13 +62,13 @@ public class set_segment : MonoBehaviour
             branch_count++;
             if(branch_count %5 == 0)
             {
-                Vector3 desiredRotation = new Vector3(-90f, 0f, 0f);
+                //Vector3 desiredRotation = new Vector3(-90f, 0f, 0f);
                 //obj2 = Instantiate(branch_obj, new Vector3(next_position.x - 0.5f, transform.position.y + y_value - 0.2f, transform.position.z-0.5f), Quaternion.identity);
                 // Quaternion.Euler を使って回転角度を指定
                 //obj2.transform.rotation = Quaternion.Euler(desiredRotation);
 
 
-                desiredRotation = new Vector3(90f, 0f, 0f);
+                //desiredRotation = new Vector3(90f, 0f, 0f);
                 //obj3 = Instantiate(branch_obj2, new Vector3(next_position.x - 0.5f, transform.position.y + y_value - 0.2f, transform.position.z+0.5f), Quaternion.identity);
                 // Quaternion.Euler を使って回転角度を指定
                 //obj3.transform.rotation = Quaternion.Euler(desiredRotation);
