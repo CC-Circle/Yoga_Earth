@@ -23,6 +23,8 @@ public class Receive_Data : MonoBehaviour
 
     void Start()
     {
+        x_zahyo = 50;
+
         // サーバーのIPアドレスを取得
         IPAddress ipAddress = IPAddress.Any;
 

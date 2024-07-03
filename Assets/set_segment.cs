@@ -29,6 +29,7 @@ public class set_segment : MonoBehaviour
 
     void Start()
     {
+        
         grow_speed_pub = grow_speed;
         is_key_pub = is_key;
         obj = Instantiate(cube_obj, new Vector3(0,0,0), Quaternion.identity);
