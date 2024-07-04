@@ -7,9 +7,18 @@ public class SaveScore : MonoBehaviour
     private static readonly List<int> scores = new();
     [SerializeField] private int maxTopScores;  // 保存される上位スコアの最大数
 
-    public void SaveNewScore(int newScore)
+    void Start()
+    {
+        SaveNewScore((int)set_segment.top_position.y);
+    }
+
+    private void SaveNewScore(int newScore)
     {
         // 新しいスコアをリストに追加
+        if (newScore == 0)
+        {
+            return;
+        }
         scores.Add(newScore);
 
         // 降順にソート
@@ -22,7 +31,7 @@ public class SaveScore : MonoBehaviour
         }
 
         // デバッグ用
-        //print_scores();
+        print_scores();
     }
 
     // 上位スコアを取得するメソッド（例）
