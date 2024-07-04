@@ -20,11 +20,11 @@ public class Sample_Scene : MonoBehaviour
         top_position_y = set_segment.top_position.y;
         if (top_position_y >= goal)
         {
-            //Debug.Log("Goal!");
-            UnityEngine.SceneManagement.SceneManager.LoadScene("End");
-
             // スコアを保存
             saveScoreScript.SaveNewScore((int)top_position_y);
+
+            //Debug.Log("Goal!");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("End");
         }
     }
 }
