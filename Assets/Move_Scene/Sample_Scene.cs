@@ -6,6 +6,7 @@ public class Sample_Scene : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private float goal;
+    public SaveScore saveScoreScript;
     private float top_position_y = 0.0f;
     void Start()
     {
@@ -21,6 +22,9 @@ public class Sample_Scene : MonoBehaviour
         {
             //Debug.Log("Goal!");
             UnityEngine.SceneManagement.SceneManager.LoadScene("End");
+
+            // スコアを保存
+            saveScoreScript.SaveNewScore((int)top_position_y);
         }
     }
 }
