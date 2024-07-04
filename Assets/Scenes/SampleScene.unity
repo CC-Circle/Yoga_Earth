@@ -1977,7 +1977,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc8736349219d426cac781682603c13c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goal: 40
+  goal: 3
 --- !u!43 &1025905377
 Mesh:
   m_ObjectHideFlags: 0
@@ -2995,7 +2995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grow_speed: 0.1
-  is_key: 1
+  is_key: 0
   cube_obj: {fileID: 2986815384033673886, guid: e8dfaf162af59407487da7270d35d5d4, type: 3}
 --- !u!114 &1854217193
 MonoBehaviour:
