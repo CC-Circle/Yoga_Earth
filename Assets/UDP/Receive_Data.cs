@@ -19,8 +19,12 @@ public class Receive_Data : MonoBehaviour
 
     private bool first = true;
 
+    public static int x_zahyo = 50;
+
     void Start()
     {
+        x_zahyo = 50;
+
         // サーバーのIPアドレスを取得
         IPAddress ipAddress = IPAddress.Any;
 
@@ -28,7 +32,7 @@ public class Receive_Data : MonoBehaviour
         server = new UdpClient(port);
         IPEndPoint endPoint = new(ipAddress, port);
 
-        Debug.Log("UDPサーバーを起動しました");
+        //Debug.Log("UDPサーバーを起動しました");
 
         // データ受信の非同期処理を開始
         server.BeginReceive(ReceiveData, endPoint);
@@ -45,7 +49,7 @@ public class Receive_Data : MonoBehaviour
         byte[] receivedBytes = server.EndReceive(result, ref endPoint);
         string receivedMessage = Encoding.ASCII.GetString(receivedBytes);
 
-        Debug.Log("受信したデータ: " + receivedMessage);
+        //Debug.Log("受信したデータ: " + receivedMessage);
 
         // 受信したデータをキューに追加
         lock (receivedDataQueue)
@@ -77,7 +81,10 @@ public class Receive_Data : MonoBehaviour
             if (data != null)
             {
                 // 受信データを処理
-                Debug.Log("受信データを処理: " + data);
+                //Debug.Log("受信データを処理: " + data);
+
+                x_zahyo = int.Parse(data);
+                Debug.Log(x_zahyo);
             }
 
             // 1フレーム待機

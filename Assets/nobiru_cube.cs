@@ -16,9 +16,11 @@ public class nobiru_cube : MonoBehaviour
 
     [SerializeField] float left_limit = -2.0f;
     [SerializeField] float right_limit = 2.0f;
+    [SerializeField] bool is_key = false;
 
     void Start()
     {
+        is_key = set_segment.is_key_pub;
         mesh = GetComponent<MeshFilter>().mesh;
         vertices = mesh.vertices;
         
@@ -30,50 +32,72 @@ public class nobiru_cube : MonoBehaviour
         // 成長が最大高さに達していない場合
         if (currentHeight < growthLimit)
         {
-            // 十字キー入力による成長方向の制御
-            if (Input.GetKey(KeyCode.RightArrow))
+
+            if (is_key == true)
             {
 
-                if (set_segment.top_position.x < right_limit)
+                // 十字キー入力による成長方向の制御
+                if (Input.GetKey(KeyCode.RightArrow))
                 {
-                    growthDirection = 1.0f;
+
+                    if (set_segment.top_position.x < right_limit)
+                    {
+                        growthDirection = 1.0f;
+                    }
+                    else
+                    {
+                        growthDirection = 0.0f;
+                    }
+
+
+                }
+                else if (Input.GetKey(KeyCode.LeftArrow))
+                {
+
+                    if (set_segment.top_position.x > left_limit)
+                    {
+                        growthDirection = -1.0f;
+                    }
+                    else
+                    {
+                        growthDirection = 0.0f;
+                    }
+
                 }
                 else
                 {
-                    growthDirection = 0.0f;
-                }
-                
+                    //growthDirection = 0.0f;
 
-            }
-            else if (Input.GetKey(KeyCode.LeftArrow))
-            {
+                    if (set_segment.top_position.x > right_limit)
+                    {
+                        growthDirection = 0.0f;
+                    }
 
-                if (set_segment.top_position.x > left_limit)
-                {
-                    growthDirection = -1.0f;
+                    if (set_segment.top_position.x < left_limit)
+                    {
+                        growthDirection = 0.0f;
+                    }
                 }
-                else
-                {
-                    growthDirection = 0.0f;
-                }
-                
+
             }
             else
             {
-                //growthDirection = 0.0f;
-
-                if (set_segment.top_position.x > right_limit)
+                growthDirection = (Receive_Data.x_zahyo - 50) * set_segment.grow_speed_pub;
+                if (growthDirection > 0)
                 {
-                    growthDirection = 0.0f;
+                    if (set_segment.top_position.x > right_limit)
+                    {
+                        growthDirection = 0.0f;
+                    }
                 }
-
-                if (set_segment.top_position.x < left_limit)
+                else
                 {
-                    growthDirection = 0.0f;
+                    if (set_segment.top_position.x < left_limit)
+                    {
+                        growthDirection = 0.0f;
+                    }
                 }
             }
-
-
 
             // Y軸方向に頂点を移動
             for (int i = 0; i < vertices.Length; i++)
@@ -93,12 +117,12 @@ public class nobiru_cube : MonoBehaviour
                 // X方向の移動方向を調整
                 if (growthDirection > 0.0f)
                 {
-                    vertices[i].x += xOffset * Time.deltaTime;
+                    vertices[i].x += xOffset * Time.deltaTime * growthDirection;
 
                 }
                 else if (growthDirection < 0.0f)
                 {
-                    vertices[i].x -= xOffset * Time.deltaTime;
+                    vertices[i].x -= xOffset * Time.deltaTime * -1 * growthDirection;
                 }
                 
                 vertices[i].y += growthSpeed * Time.deltaTime;
