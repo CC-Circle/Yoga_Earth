@@ -41,7 +41,7 @@ public class nobiru_cube : MonoBehaviour
         if (currentHeight < growthLimit)
         {
 
-            if (Receive_Data.x_zahyo != -1 & is_key == false)
+            if (Receive_Data.x_zahyo != -1)
             {
 
                 if (is_key == true)
