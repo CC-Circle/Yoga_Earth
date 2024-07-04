@@ -88,7 +88,7 @@ public class Receive_Data : MonoBehaviour
                 }
                 else
                 {
-                    //x_zahyo = int.Parse(data);
+                    x_zahyo = int.Parse(data);
                     // 送られてきたデータが-1の場合は、プレイヤーが正しく木のポーズをとっていない。
                     // そのため、今回のプルリクでは、-1の場合は何もしないようにしています。
 
