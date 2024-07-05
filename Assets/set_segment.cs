@@ -27,12 +27,15 @@ public class set_segment : MonoBehaviour
 
     int branch_count = 0;
 
+    nobiru_cube nobiru_class;
+
     void Start()
     {
-        
+
         grow_speed_pub = grow_speed;
         is_key_pub = is_key;
-        obj = Instantiate(cube_obj, new Vector3(0,0,0), Quaternion.identity);
+        obj = Instantiate(cube_obj, new Vector3(0, 0, 0), Quaternion.identity);
+        nobiru_class = obj.GetComponent<nobiru_cube>();
 
         // コルーチンを開始
         StartCoroutine(RepeatedCoroutine());
@@ -48,18 +51,31 @@ public class set_segment : MonoBehaviour
         float y_value = 0;
         while (true)
         {
-            
+
             // ここに秒ごとに実行する処理を書く
-            yield return new WaitForSeconds(0.5f);  // 1秒待機
+            if (nobiru_class.is_limit == false)
+            {
+                yield return null;
+            }
+            else
+            {
+                yield return new WaitForSeconds(0.05f);  // チャタリング
 
-            next_position = GetTopPosition(obj);
-            Debug.Log(next_position);
+                next_position = GetTopPosition(obj);
+                Debug.Log(next_position);
 
 
-            y_value += add_value;
-            obj = Instantiate(cube_obj, new Vector3(next_position.x+0.475f, transform.position.y + y_value, transform.position.z), Quaternion.identity);
+                y_value += add_value;
+                obj = Instantiate(cube_obj, new Vector3(next_position.x + 0.475f, transform.position.y + y_value, transform.position.z), Quaternion.identity);
+                nobiru_class = obj.GetComponent<nobiru_cube>();
+                branch_count++;
 
-            branch_count++;
+
+
+            }
+
+
+            /*
             if(branch_count %5 == 0)
             {
                 //Vector3 desiredRotation = new Vector3(-90f, 0f, 0f);
@@ -75,6 +91,7 @@ public class set_segment : MonoBehaviour
 
 
             }
+            */
         }
     }
 
