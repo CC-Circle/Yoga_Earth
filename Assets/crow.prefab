@@ -222,8 +222,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ae32fc0c17b7445fb8a126a0f476b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 25
-  distanceThreshold: 10
+  moveSpeed: 50
+  distanceThreshold: 100
 --- !u!1 &5004169182856245964
 GameObject:
   m_ObjectHideFlags: 0
