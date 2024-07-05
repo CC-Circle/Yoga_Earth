@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RocketMove : MonoBehaviour
+public class RocketMovement : MonoBehaviour
 {
     // 目標のゲームオブジェクト
     // public Transform target;
