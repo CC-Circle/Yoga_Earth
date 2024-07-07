@@ -56,12 +56,12 @@ public class Get_Score : MonoBehaviour
         }
         if(count == 2)
         {
-            score_text.text += 2 + "th: " + 0 + "\n"+
-            3 + "nd: " + 0 + "\n"+ 4 + "th: " + 0 + "\n"+ 5 + "th: " + 0 + "\n";
+            score_text.text += 2 + "nd: " + 0 + "\n"+
+            3 + "rd: " + 0 + "\n"+ 4 + "th: " + 0 + "\n"+ 5 + "th: " + 0 + "\n";
         }
         if(count == 3)
         {
-            score_text.text += 3 + "nd: " + 0 + "\n"+ 4 + "th: " + 0 + "\n"+ 5 + "th: " + 0 + "\n";
+            score_text.text += 3 + "rd: " + 0 + "\n"+ 4 + "th: " + 0 + "\n"+ 5 + "th: " + 0 + "\n";
         }
         if(count == 4)
         {
