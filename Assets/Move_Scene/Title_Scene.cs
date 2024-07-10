@@ -23,7 +23,7 @@ public class Title_Scene : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
         }
 
-        if (Receive_Data.x_zahyo != -1)
+        if (Receive_Data.x_zahyo != -1 && pose_cnt != 50)
         {
             pose_cnt++;
         }
