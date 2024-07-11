@@ -1,5 +1,5 @@
 using UnityEngine;
-using TreeEditor;
+// using TreeEditor;
 
 public class TreeManipulator : MonoBehaviour
 {
