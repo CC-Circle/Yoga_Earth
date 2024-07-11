@@ -1,5 +1,5 @@
 using UnityEngine;
-using TreeEditor;
+//using TreeEditor;
 
 public class TreeManipulator : MonoBehaviour
 {
@@ -16,16 +16,16 @@ public class TreeManipulator : MonoBehaviour
         }
 
         Tree tree_info = gameObject.GetComponent<Tree>();
-        
+
 
         Debug.Log(tree_info.data);
-        
+
     }
 
     void Update()
     {
-        
+
     }
 
-    
+
 }
