@@ -30,7 +30,7 @@ public class Title_Scene : MonoBehaviour
 
         if (pose_cnt > GameStart)
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
+            //UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
         }
 
         if (Receive_Data.x_zahyo == -1)
