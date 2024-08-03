@@ -28,7 +28,7 @@ public class Leaf_Move : MonoBehaviour
             top_position_x = -4.5f;
         }
         float top_position_y = set_segment.top_position.y + 1.5f;
-        Debug.Log("Top position - X: " + top_position_x + ", Y: " + top_position_y);
+        //Debug.Log("Top position - X: " + top_position_x + ", Y: " + top_position_y);
 
         // leafsのx座標とy座標をtop_positionに合わせて更新
         Vector3 newPosition = leafs.transform.position;
@@ -36,6 +36,6 @@ public class Leaf_Move : MonoBehaviour
         newPosition.y = top_position_y;
         leafs.transform.position = newPosition;
 
-        Debug.Log("Leafs new position: " + leafs.transform.position);
+        //Debug.Log("Leafs new position: " + leafs.transform.position);
     }
 }

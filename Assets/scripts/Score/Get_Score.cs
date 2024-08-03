@@ -17,7 +17,7 @@ public class Get_Score : MonoBehaviour
 
     void Start()
     {
-        save_score =  GameObject.Find("Save_Score");
+        save_score = GameObject.Find("Save_Score");
         // score_object = GameObject.Find("Text");
         // score = save_score.GetComponent<SaveScore>().GetTopScores();
         // Debug.Log("score");
@@ -32,7 +32,7 @@ public class Get_Score : MonoBehaviour
         int count = 1;
         foreach (var score in score)
         {
-            Debug.Log(score);
+            //Debug.Log(score);
             if (count == 1)
             {
                 score_text.text = count + "st: " + score + "\n";
@@ -54,20 +54,20 @@ public class Get_Score : MonoBehaviour
             score_text.text += count + "th: " + score + "\n";
             count++;
         }
-        if(count == 2)
+        if (count == 2)
         {
-            score_text.text += 2 + "nd: " + 0 + "\n"+
-            3 + "rd: " + 0 + "\n"+ 4 + "th: " + 0 + "\n"+ 5 + "th: " + 0 + "\n";
+            score_text.text += 2 + "nd: " + 0 + "\n" +
+            3 + "rd: " + 0 + "\n" + 4 + "th: " + 0 + "\n" + 5 + "th: " + 0 + "\n";
         }
-        if(count == 3)
+        if (count == 3)
         {
-            score_text.text += 3 + "rd: " + 0 + "\n"+ 4 + "th: " + 0 + "\n"+ 5 + "th: " + 0 + "\n";
+            score_text.text += 3 + "rd: " + 0 + "\n" + 4 + "th: " + 0 + "\n" + 5 + "th: " + 0 + "\n";
         }
-        if(count == 4)
+        if (count == 4)
         {
-            score_text.text += 4 + "th: " + 0 + "\n"+ 5 + "th: " + 0 + "\n";
+            score_text.text += 4 + "th: " + 0 + "\n" + 5 + "th: " + 0 + "\n";
         }
-        if(count == 5)
+        if (count == 5)
         {
             score_text.text += 5 + "th: " + 0 + "\n";
         }

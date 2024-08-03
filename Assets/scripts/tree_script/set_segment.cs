@@ -62,7 +62,7 @@ public class set_segment : MonoBehaviour
                 yield return new WaitForSeconds(0.05f);  // チャタリング
 
                 next_position = GetTopPosition(obj);
-                Debug.Log(next_position);
+                //Debug.Log(next_position);
 
 
                 y_value += add_value;
