@@ -7,6 +7,8 @@ public class Sample_Scene : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private float goal;
     private float top_position_y = 0.0f;
+
+    [SerializeField] private GameObject tcp;
     void Start()
     {
         //Debug.Log("Sample Scene");
@@ -14,12 +16,14 @@ public class Sample_Scene : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    async void Update()
     {
         top_position_y = set_segment.top_position.y;
         if (top_position_y >= goal)
         {
             //Debug.Log("Goal!");
+            TCP tcpScript = tcp.GetComponent<TCP>();
+            await tcpScript.DisconnectFromServerAsync();
             UnityEngine.SceneManagement.SceneManager.LoadScene("End");
         }
     }
