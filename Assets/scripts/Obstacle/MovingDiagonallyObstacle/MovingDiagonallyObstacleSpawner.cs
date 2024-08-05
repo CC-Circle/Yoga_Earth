@@ -32,18 +32,36 @@ public class MovingDiagonallyObstacleSpawner : MonoBehaviour
         float randomPositionXRight = 7.0f;
         float randomPositionXLeft = -7.0f;
 
+        float randomPositionYUpper = 8.0f;
+        float randomPositionYUnder = 0.0f;
+
         float selectedPositionX = GetRandomNumber(randomPositionXRight, randomPositionXLeft);
+        float selectedPositionY = GetRandomNumber(randomPositionYUpper, randomPositionYUnder);
 
         // 将来的に、set_segment.top_position.yをgetTopPositionY()を使って取得するように変更
-        SetSpawnPosition(new Vector3(selectedPositionX, set_segment.top_position.y + 6.0f, 0));
+        SetSpawnPosition(new Vector3(selectedPositionX, set_segment.top_position.y + selectedPositionY, 0));
 
         if (selectedPositionX > 0)
         {
-            StartMovingDiagonallyObstacle(new Vector3(randomPositionXLeft, GetSpawnPosition().y - 6.0f, 0));
+            if (selectedPositionY > 0)
+            {
+                StartMovingDiagonallyObstacle(new Vector3(randomPositionXLeft, GetSpawnPosition().y - randomPositionYUpper, 0));
+            }
+            else
+            {
+                StartMovingDiagonallyObstacle(new Vector3(randomPositionXLeft, GetSpawnPosition().y + randomPositionYUpper, 0));
+            }
         }
         else
         {
-            StartMovingDiagonallyObstacle(new Vector3(randomPositionXRight, GetSpawnPosition().y - 6.0f, 0));
+            if (selectedPositionY > 0)
+            {
+                StartMovingDiagonallyObstacle(new Vector3(randomPositionXRight, GetSpawnPosition().y - randomPositionYUpper, 0));
+            }
+            else
+            {
+                StartMovingDiagonallyObstacle(new Vector3(randomPositionXRight, GetSpawnPosition().y + randomPositionYUpper, 0));
+            }
         }
     }
 
