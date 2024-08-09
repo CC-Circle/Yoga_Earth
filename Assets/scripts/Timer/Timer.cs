@@ -34,10 +34,11 @@ public class Timer : MonoBehaviour
 
         // タイマーが終了した時の処理
         Debug.Log("Time's up!");
-        NextScene();
+        // ここで、スコア表示のカメラ移動のプログラムを呼び出す
+        NextScene();    // 今はタイトル画面に遷移するけど、これをスコア表示のカメラ移動のプログラムを呼び出すように変更すること
     }
 
-    private async void NextScene()
+    private async void NextScene()  // スコア表示のカメラ移動のプログラムを呼び出すように変更したら、消して良い
     {
         TCP tcpScript = tcp.GetComponent<TCP>();
         await tcpScript.DisconnectFromServerAsync();
