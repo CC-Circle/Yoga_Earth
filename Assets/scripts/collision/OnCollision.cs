@@ -5,12 +5,14 @@ using UnityEngine;
 public class OnCollision : MonoBehaviour
 {
     // Use this for initialization
-	void Start () {
-		
-	}
- 
+    void Start()
+    {
+
+    }
+
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         //Debug.Log("作動中");
     }
     void OnTriggerEnter(Collider Collider)
@@ -18,6 +20,6 @@ public class OnCollision : MonoBehaviour
         // Debug.Log("接触したオブジェクト：" + gameObject.name);
         // Debug.Log("接触されたオブジェクト：" + Collider.gameObject.name);
         UnityEngine.SceneManagement.SceneManager.LoadScene("End");
- 
+
     }
 }
