@@ -21,7 +21,7 @@ public class TCP : MonoBehaviour
     private bool isReceivingData = false;
     private CancellationTokenSource cts;
 
-    private int x_zahyo = 50;
+    static public int x_zahyo = 50;
 
     /// <summary>
     /// スクリプトの開始時にサーバーへの接続を試みます。
