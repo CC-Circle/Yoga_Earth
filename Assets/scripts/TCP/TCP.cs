@@ -137,7 +137,7 @@ public class TCP : MonoBehaviour
                     if (bytes > 0)
                     {
                         string responseMessage = Encoding.ASCII.GetString(responseData, 0, bytes);
-                        Debug.Log("サーバーから受信: " + responseMessage);
+                        //Debug.Log("サーバーから受信: " + responseMessage);
                         if (responseMessage.Equals("exit"))
                         {
                             Debug.Log("サーバーから終了の合図が来ました: " + responseMessage);
@@ -156,7 +156,7 @@ public class TCP : MonoBehaviour
                         // もし受診したデータがint型の整数に変換できたら、その値を使って処理を行う
                         if (int.TryParse(responseMessage, out int value))
                         {
-                            Debug.Log("受信したデータを処理します: " + value);
+                            //Debug.Log("受信したデータを処理します: " + value);
 
                             // ここに受信したデータに応じた処理を記述する
                             int sceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
