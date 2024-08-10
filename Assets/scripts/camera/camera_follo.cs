@@ -18,7 +18,7 @@ public class camera_follo : MonoBehaviour
     //public float overshoot = 1.70158f; // オーバーシュートの強さを調整
     public float overshoot = 10.0f; // オーバーシュートの強さを調整
 
-    public bool isMovedCamera = false;
+    public static bool isMovedCamera = false;
 
     // Start is called before the first frame update
     void Start()
@@ -52,14 +52,9 @@ public class camera_follo : MonoBehaviour
         if (isMovedCamera == true)
         {
             // スコア表示のカメラ移動が終わったら、タイトル画面に遷移する
-            Debug.Log("スコア表示のカメラ移動が終わった");
+            //Debug.Log("スコア表示のカメラ移動が終わった");
         }
 
-    }
-
-    private void ViewScore()
-    {
-        // スコアを画面に表示する
     }
 
     private void MoveCameraForScoreDisplay()

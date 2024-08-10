@@ -11,7 +11,7 @@ public class Get_Score : MonoBehaviour
     // Start is called before the first frame update
     public GameObject save_score; // Save_Scoreオブジェクト
 
-    [SerializeField] public TextMeshProUGUI score_text; // Textオブジェクト
+    private TextMeshProUGUI score_text; // Textオブジェクト
 
     int[] score;//スコアを格納する配列
 
