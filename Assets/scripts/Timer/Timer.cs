@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using TMPro;
 
 public class Timer : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class Timer : MonoBehaviour
     private int currentTime = 0;
 
     [SerializeField] private GameObject tcp;
+    [SerializeField] private TextMeshProUGUI timerText;
 
     void Start()
     {
@@ -15,7 +17,8 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-
+        int remainingTime = GetRemainingTime();
+        timerText.text = "Limit: " + remainingTime;
     }
 
     IEnumerator StartTimer()
@@ -43,5 +46,20 @@ public class Timer : MonoBehaviour
         TCP tcpScript = tcp.GetComponent<TCP>();
         await tcpScript.DisconnectFromServerAsync();
         UnityEngine.SceneManagement.SceneManager.LoadScene("Title");
+    }
+
+    public int GetRemainingTime()
+    {
+        return timeLimit - currentTime;
+    }
+
+    public void AddBonusTime(int addBonusTime)
+    {
+        currentTime -= addBonusTime;
+    }
+
+    public void PenaltyTime(int penaltyTime)
+    {
+        currentTime += penaltyTime;
     }
 }
