@@ -12,20 +12,30 @@ public class Get_Score : MonoBehaviour
     public GameObject save_score; // Save_Scoreオブジェクト
 
     [SerializeField] public TextMeshProUGUI score_text; // Textオブジェクト
+    [SerializeField] public TextMeshProUGUI result; // Textオブジェクト
 
     int[] score;//スコアを格納する配列
 
     void Start()
     {
         save_score = GameObject.Find("Save_Score");
+        score_text.enabled = false;
+        result.enabled = false;
         // score_object = GameObject.Find("Text");
         // score = save_score.GetComponent<SaveScore>().GetTopScores();
         // Debug.Log("score");
     }
 
     // Update is called once per frame
-    void Update()
+    public void Score()
     {
+        score_text.enabled = true;
+        result.enabled = true;
+
+
+        // Canvas canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        // canvas.enabled = true;
+
         score = save_score.GetComponent<SaveScore>().GetTopScores();
         // デバッグ用
         // Debug.Log("score");
