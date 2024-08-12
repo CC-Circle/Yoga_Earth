@@ -10,11 +10,9 @@ public class set_segment : MonoBehaviour
     public static bool is_key_pub;
 
     public GameObject cube_obj;
-    //public GameObject branch_obj;
-    //public GameObject branch_obj2;
-    float add_value = 0.29f;
+    float add_value = 0.29f;//間隔
 
-    public static Vector3 top_position;
+    public static Vector3 top_position;//頂点格納
 
     private Vector3[] vertices;
     private Mesh mesh;
@@ -23,18 +21,26 @@ public class set_segment : MonoBehaviour
     GameObject obj2;
     GameObject obj3;
 
-    private Vector3 next_position;
-
     int branch_count = 0;
 
-    nobiru_cube nobiru_class;
+    nobiru_cube nobiru_class;//関連クラス
+
+    float tree_start_x = 0;//初期位置
+    float tree_start_y = 0;//初期位置
+    float tree_start_z = 0;//初期位置
 
     void Start()
     {
 
         grow_speed_pub = grow_speed;
         is_key_pub = is_key;
-        obj = Instantiate(cube_obj, new Vector3(0, 0, 0), Quaternion.identity);
+
+
+        setTopPositionX(tree_start_x);
+        setTopPositionY(tree_start_y);
+        setTopPositionZ(tree_start_z);
+
+        obj = Instantiate(cube_obj, top_position, Quaternion.identity);
         nobiru_class = obj.GetComponent<nobiru_cube>();
 
         // コルーチンを開始
@@ -51,8 +57,6 @@ public class set_segment : MonoBehaviour
         float y_value = 0;
         while (true)
         {
-
-            // ここに秒ごとに実行する処理を書く
             if (nobiru_class.is_limit == false)
             {
                 yield return null;
@@ -61,37 +65,16 @@ public class set_segment : MonoBehaviour
             {
                 yield return new WaitForSeconds(0.05f);  // チャタリング
 
-                next_position = GetTopPosition(obj);
-                //Debug.Log(next_position);
-
-
                 y_value += add_value;
-                obj = Instantiate(cube_obj, new Vector3(next_position.x + 0.475f, transform.position.y + y_value, transform.position.z), Quaternion.identity);
+                setTopPositionX(getTopPositionx());
+                setTopPositionY(tree_start_y + y_value);
+                setTopPositionZ(tree_start_z);
+
+                obj = Instantiate(cube_obj, top_position, Quaternion.identity);
                 nobiru_class = obj.GetComponent<nobiru_cube>();
                 branch_count++;
-
-
-
             }
 
-
-            /*
-            if(branch_count %5 == 0)
-            {
-                //Vector3 desiredRotation = new Vector3(-90f, 0f, 0f);
-                //obj2 = Instantiate(branch_obj, new Vector3(next_position.x - 0.5f, transform.position.y + y_value - 0.2f, transform.position.z-0.5f), Quaternion.identity);
-                // Quaternion.Euler を使って回転角度を指定
-                //obj2.transform.rotation = Quaternion.Euler(desiredRotation);
-
-
-                //desiredRotation = new Vector3(90f, 0f, 0f);
-                //obj3 = Instantiate(branch_obj2, new Vector3(next_position.x - 0.5f, transform.position.y + y_value - 0.2f, transform.position.z+0.5f), Quaternion.identity);
-                // Quaternion.Euler を使って回転角度を指定
-                //obj3.transform.rotation = Quaternion.Euler(desiredRotation);
-
-
-            }
-            */
         }
     }
 
@@ -117,4 +100,92 @@ public class set_segment : MonoBehaviour
         top_position.x = topPosition.x + 0.475f;
         return topPosition;
     }
+
+    public float getTopPositionx()
+    {
+        
+        Vector3 topPosition = Vector3.zero;
+        float maxY = float.MinValue;
+
+        mesh = obj.GetComponent<MeshFilter>().mesh;
+        vertices = mesh.vertices;
+
+        // 最高点の頂点を探す
+        foreach (var vertex in vertices)
+        {
+            if (vertex.y > maxY)
+            {
+                maxY = vertex.y;
+                topPosition = obj.transform.TransformPoint(vertex); // ローカル座標からワールド座標に変換
+            }
+        }
+
+        topPosition.x = topPosition.x + 0.475f;
+
+        return topPosition.x;
+    }
+
+    public float getTopPositiony()
+    {
+
+
+        Vector3 topPosition = Vector3.zero;
+        float maxY = float.MinValue;
+
+        mesh = obj.GetComponent<MeshFilter>().mesh;
+        vertices = mesh.vertices;
+
+        // 最高点の頂点を探す
+        foreach (var vertex in vertices)
+        {
+            if (vertex.y > maxY)
+            {
+                maxY = vertex.y;
+                topPosition = obj.transform.TransformPoint(vertex); // ローカル座標からワールド座標に変換
+            }
+        }
+
+        topPosition.x = topPosition.x + 0.475f;
+        return topPosition.y;
+    }
+
+    public float getTopPositionz()
+    {
+
+
+        Vector3 topPosition = Vector3.zero;
+        float maxY = float.MinValue;
+
+        mesh = obj.GetComponent<MeshFilter>().mesh;
+        vertices = mesh.vertices;
+
+        // 最高点の頂点を探す
+        foreach (var vertex in vertices)
+        {
+            if (vertex.y > maxY)
+            {
+                maxY = vertex.y;
+                topPosition = obj.transform.TransformPoint(vertex); // ローカル座標からワールド座標に変換
+            }
+        }
+
+        topPosition.x = topPosition.x + 0.475f;
+        return topPosition.z;
+    }
+    
+    public void setTopPositionX(float topPositionX)
+    {
+        top_position.x = topPositionX;
+    }
+
+    public void setTopPositionY(float topPositionY)
+    {
+        top_position.y = topPositionY;
+    }
+
+    public void setTopPositionZ(float topPositionZ)
+    {
+        top_position.z = topPositionZ;
+    }
+
 }
