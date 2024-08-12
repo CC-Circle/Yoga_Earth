@@ -77,7 +77,11 @@ public class set_segment : MonoBehaviour
 
         }
     }
-
+    /// <summary>
+    ///  頂点座標を取得
+    ///  戻り値:vector3
+    ///  渡し値:対象オブジェクト
+    /// </summary>
     Vector3 GetTopPosition(GameObject in_obj)
     {
         Vector3 topPosition = Vector3.zero;
@@ -101,6 +105,10 @@ public class set_segment : MonoBehaviour
         return topPosition;
     }
 
+    /// <summary>
+    ///  頂点x座標を取得
+    ///  戻り値:float
+    /// </summary>
     public float getTopPositionx()
     {
         
@@ -125,6 +133,10 @@ public class set_segment : MonoBehaviour
         return topPosition.x;
     }
 
+    /// <summary>
+    ///  頂点y座標を取得
+    ///  戻り値:float
+    /// </summary>
     public float getTopPositiony()
     {
 
@@ -148,7 +160,10 @@ public class set_segment : MonoBehaviour
         topPosition.x = topPosition.x + 0.475f;
         return topPosition.y;
     }
-
+    /// <summary>
+    ///  頂点z座標を取得
+    ///  戻り値:float
+    /// </summary>
     public float getTopPositionz()
     {
 
@@ -172,20 +187,41 @@ public class set_segment : MonoBehaviour
         topPosition.x = topPosition.x + 0.475f;
         return topPosition.z;
     }
-    
+
+    /// <summary>
+    ///  頂点x座標を設定
+    ///  渡し値:float
+    /// </summary>
     public void setTopPositionX(float topPositionX)
     {
         top_position.x = topPositionX;
     }
 
+    /// <summary>
+    ///  頂点y座標を設定
+    ///  渡し値:float
+    /// </summary>
     public void setTopPositionY(float topPositionY)
     {
         top_position.y = topPositionY;
     }
 
+    /// <summary>
+    ///  頂点z座標を設定
+    ///  渡し値:float
+    /// </summary>
     public void setTopPositionZ(float topPositionZ)
     {
         top_position.z = topPositionZ;
+    }
+
+    /// <summary>
+    ///  頂点座標を設定
+    ///  渡し値:vector3
+    /// </summary>
+    public void setTopPosition(Vector3 topPosition)
+    {
+        top_position = topPosition;
     }
 
 }
