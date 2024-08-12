@@ -2638,6 +2638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d447183fbd9449e97016d871964a49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _SET_SEGMENT: {fileID: 1854217192}
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4297,7 +4298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grow_speed: 0.1
-  is_key: 0
+  is_key: 1
   cube_obj: {fileID: 2986815384033673886, guid: e8dfaf162af59407487da7270d35d5d4, type: 3}
 --- !u!114 &1854217193
 MonoBehaviour:
