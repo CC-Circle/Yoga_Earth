@@ -4,7 +4,7 @@ using System.Collections;
 
 public class set_segment : MonoBehaviour
 {
-    [SerializeField] float grow_speed = 0.1f;
+    [SerializeField] float start_grow_speed = 2f;
     public static float grow_speed_pub;
 
     [SerializeField] bool is_key = false;
@@ -34,7 +34,7 @@ public class set_segment : MonoBehaviour
     void Start()
     {
 
-        grow_speed_pub = grow_speed;
+        grow_speed_pub = start_grow_speed;
         is_key_pub = is_key;
         obj = Instantiate(cube_obj, new Vector3(0, 0, 0), Quaternion.identity);
         nobiru_class = obj.GetComponent<nobiru_cube>();
@@ -122,29 +122,47 @@ public class set_segment : MonoBehaviour
     }
 
 
-    //木の成長スピードを設定するメソッド
+
+    /// <summary>
+    /// 木の成長スピードを設定するメソッド
+    /// 渡し値:float
+    /// </summary>
+    /// <param name="growthSpeed"></param>
     public void SetGrowthSpeed(float growthSpeed)
     {
         grow_speed_pub = growthSpeed;
     }
 
-    //現在の木の成長スピードを参照するためのメソッド
+
+    /// <summary>
+    /// 現在の木の成長スピードを参照するためのメソッド
+    /// </summary>
+    /// <returns>float</returns>
     public float GetGrowthSpeed()
     {
         return grow_speed_pub;
     }
 
-    //現在の木の成長スピードを一定の倍率で調節するためのメソッド
+    
+    /// <summary>
+    /// 現在の木の成長スピードを一定の倍率で調節するためのメソッド
+    /// (speed = speed*rate)
+    /// </summary>
+    /// <param name="growthRate"></param>
     public void ModifyGrowthRate(float growthRate)
     {
 
         grow_speed_pub = grow_speed_pub * growthRate;
     }
 
-    //木の成長スピードを、インスペクターウィンドウで設定した最初の初期値に戻すメソッド
+
+    /// <summary>
+    /// 木の成長スピードを、インスペクターウィンドウで設定した最初の初期値に戻すメソッド
+    /// (speed = startspeed)
+    /// </summary>
     public void ResetGrowSpeed()
     {
-        grow_speed_pub = grow_speed;
+        grow_speed_pub = start_grow_speed;
     }
         
 }
