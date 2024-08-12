@@ -1,9 +1,10 @@
 using UnityEngine;
 using System.Collections;
 
+
 public class set_segment : MonoBehaviour
 {
-    [SerializeField] float grow_speed = 0.2f;
+    [SerializeField] float grow_speed = 0.1f;
     public static float grow_speed_pub;
 
     [SerializeField] bool is_key = false;
@@ -28,6 +29,7 @@ public class set_segment : MonoBehaviour
     int branch_count = 0;
 
     nobiru_cube nobiru_class;
+
 
     void Start()
     {
@@ -68,6 +70,7 @@ public class set_segment : MonoBehaviour
                 y_value += add_value;
                 obj = Instantiate(cube_obj, new Vector3(next_position.x + 0.475f, transform.position.y + y_value, transform.position.z), Quaternion.identity);
                 nobiru_class = obj.GetComponent<nobiru_cube>();
+                
                 branch_count++;
 
 
@@ -117,4 +120,31 @@ public class set_segment : MonoBehaviour
         top_position.x = topPosition.x + 0.475f;
         return topPosition;
     }
+
+
+    //木の成長スピードを設定するメソッド
+    public void SetGrowthSpeed(float growthSpeed)
+    {
+        grow_speed_pub = growthSpeed;
+    }
+
+    //現在の木の成長スピードを参照するためのメソッド
+    public float GetGrowthSpeed()
+    {
+        return grow_speed_pub;
+    }
+
+    //現在の木の成長スピードを一定の倍率で調節するためのメソッド
+    public void ModifyGrowthRate(float growthRate)
+    {
+
+        grow_speed_pub = grow_speed_pub * growthRate;
+    }
+
+    //木の成長スピードを、インスペクターウィンドウで設定した最初の初期値に戻すメソッド
+    public void ResetGrowSpeed()
+    {
+        grow_speed_pub = grow_speed;
+    }
+        
 }

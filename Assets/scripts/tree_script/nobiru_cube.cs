@@ -2,9 +2,8 @@ using UnityEngine;
 
 public class nobiru_cube : MonoBehaviour
 {
-    float growthSpeed = 2.0f; // 1秒あたりの成長量
-    float growthLimit; // 最大成長高さ
-    float growadd = 1.0f;
+    public float growthSpeed = 2.0f; // 1秒あたりの成長量
+    float growthLimit = 1.0f; // 最大成長高さ
     float growthAngle = 30.0f; // 成長の角度 (X軸正方向からの傾き角度)
 
 
@@ -12,7 +11,7 @@ public class nobiru_cube : MonoBehaviour
     private Vector3[] vertices;
     float currentHeight = 0.0f; // 現在の高さ
     private static float growthDirection = 0.0f; // X軸方向の成長方向 (0: 真上, 1: 正方向, -1: 負方向)
-
+    
 
     [SerializeField] float left_limit = -2.0f;
     [SerializeField] float right_limit = 2.0f;
@@ -27,7 +26,7 @@ public class nobiru_cube : MonoBehaviour
         vertices = mesh.vertices;
 
         is_limit = false;
-        growthLimit = growadd;
+        growthSpeed = set_segment.grow_speed_pub;
     }
 
     void Update()

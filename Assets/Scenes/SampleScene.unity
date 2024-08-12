@@ -4296,8 +4296,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa9c5b182e8e843df8421f1a0c1d6d82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grow_speed: 0.1
-  is_key: 0
+  grow_speed: 2
+  is_key: 1
   cube_obj: {fileID: 2986815384033673886, guid: e8dfaf162af59407487da7270d35d5d4, type: 3}
 --- !u!114 &1854217193
 MonoBehaviour:
