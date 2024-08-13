@@ -11,7 +11,7 @@ public class rain_cloud_move : MonoBehaviour
 
     public float dissolve_start_time = 0f;//雨が降り終わってから消えるまでの時間
 
-    public float effectDuration = 3f;//雨が消える時間（値が大きいほどゆっくり消える）
+    public float effectDuration = 3f;//雲が消える時間（値が大きいほどゆっくり消える）
 
     public GameObject rain_pa;
     public GameObject rain_coll;

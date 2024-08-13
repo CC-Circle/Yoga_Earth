@@ -19,7 +19,7 @@ public class rain_cloud : MonoBehaviour
 
     [SerializeField] float dissolve_start_time = 0f;//雨が降り終わってから消えるまでの時間
 
-    [SerializeField] float effectDuration = 3f;//雨が消える時間（値が大きいほどゆっくり消える）
+    [SerializeField] float effectDuration = 3f;//雲が消える時間（値が大きいほどゆっくり消える）
 
 
     void Start()
