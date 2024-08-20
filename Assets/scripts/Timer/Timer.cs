@@ -21,6 +21,12 @@ public class Timer : MonoBehaviour
     {
         int remainingTime = GetRemainingTime();
         timerText.text = "Limit: " + remainingTime;
+
+        //もし-を押したら、時間を減らす
+        if (Input.GetKeyDown(KeyCode.Minus))
+        {
+            PenaltyTime(3);
+        }
     }
 
     IEnumerator StartTimer()
@@ -57,6 +63,13 @@ public class Timer : MonoBehaviour
 
     public void PenaltyTime(int penaltyTime)
     {
-        currentTime += penaltyTime;
+        if (GetRemainingTime() - penaltyTime < 0)
+        {
+            currentTime = timeLimit;
+        }
+        else
+        {
+            currentTime += penaltyTime;
+        }
     }
 }
