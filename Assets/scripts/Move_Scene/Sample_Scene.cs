@@ -8,7 +8,7 @@ public class Sample_Scene : MonoBehaviour
     [SerializeField] private float goal;
     private float top_position_y = 0.0f;
 
-    [SerializeField] private GameObject tcp;
+    //[SerializeField] private GameObject tcp;
     void Start()
     {
         //Debug.Log("Sample Scene");
@@ -19,6 +19,7 @@ public class Sample_Scene : MonoBehaviour
     void Update()
     {
         top_position_y = set_segment.top_position.y;
+        /*
         if (top_position_y >= goal)
         {
             //Debug.Log("Goal!");
@@ -26,5 +27,6 @@ public class Sample_Scene : MonoBehaviour
             //await tcpScript.DisconnectFromServerAsync();
             UnityEngine.SceneManagement.SceneManager.LoadScene("End");
         }
+        */
     }
 }
