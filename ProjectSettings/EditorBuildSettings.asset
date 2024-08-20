@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Title.unity
     guid: 504ffe43f3d234ebb951c0649c651ca0
   - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 801f50c75f0f8462bb75112f6d0f2999
+  - enabled: 1
+    path: Assets/Scenes/Honban.unity
+    guid: b324de8872bd84191a8900fd8c76eeaa
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 0

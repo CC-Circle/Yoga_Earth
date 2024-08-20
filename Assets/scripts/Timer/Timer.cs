@@ -10,6 +10,7 @@ public class Timer : MonoBehaviour
 
     public static bool isTimeUp = false;
 
+
     void Start()
     {
         isTimeUp = false;
