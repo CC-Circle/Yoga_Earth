@@ -23,6 +23,7 @@ public class Receive_Data : MonoBehaviour
     void Start()
     {
         isCenterHuman = false;
+        CenterHumanCnt = 0;
         // サーバーのIPアドレスを取得
         IPAddress ipAddress = IPAddress.Any;
 
@@ -44,7 +45,7 @@ public class Receive_Data : MonoBehaviour
         if (CenterHumanCnt > 5000)
         {
             Debug.Log("Center Human");
-            UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Honban");
         }
         if (isCenterHuman)
         {
@@ -66,7 +67,7 @@ public class Receive_Data : MonoBehaviour
         //スペースキーが押されたらシーン遷移
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Honban");
         }
 
     }
