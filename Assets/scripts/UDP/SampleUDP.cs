@@ -6,10 +6,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public class Receive_Data : MonoBehaviour
+public class SampleUDP : MonoBehaviour
 {
     // ポート番号
-    [SerializeField] private int port = 5005;
+    [SerializeField] private int port = 5006;
 
     // UDPクライアント
     private UdpClient server;
@@ -17,12 +17,11 @@ public class Receive_Data : MonoBehaviour
     // 受信したデータを保持するキュー
     private readonly Queue<string> receivedDataQueue = new();
 
-    private static bool isCenterHuman = false;
-    private static int CenterHumanCnt = 0;
+    public static int x_zahyo = 50;
 
     void Start()
     {
-        isCenterHuman = false;
+        x_zahyo = 50;
         // サーバーのIPアドレスを取得
         IPAddress ipAddress = IPAddress.Any;
 
@@ -41,34 +40,6 @@ public class Receive_Data : MonoBehaviour
 
     void Update()
     {
-        if (CenterHumanCnt > 5000)
-        {
-            Debug.Log("Center Human");
-            UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
-        }
-        if (isCenterHuman)
-        {
-            CenterHumanCnt++;
-        }
-        else
-        {
-            if (CenterHumanCnt > 150)
-            {
-                CenterHumanCnt -= 150;
-            }
-        }
-
-        if (CenterHumanCnt % 500 == 0 && CenterHumanCnt != 0)
-        {
-            Debug.Log(CenterHumanCnt);
-        }
-
-        //スペースキーが押されたらシーン遷移
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
-        }
-
     }
 
     // データ受信時の処理
@@ -112,12 +83,11 @@ public class Receive_Data : MonoBehaviour
             {
                 if (int.Parse(data) != -1)
                 {
-                    isCenterHuman = true;
-                    //Debug.Log("Center Human");
+                    x_zahyo = int.Parse(data);
                 }
                 else
                 {
-                    isCenterHuman = false;
+                    x_zahyo = -1;
                 }
             }
 

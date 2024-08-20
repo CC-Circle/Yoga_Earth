@@ -32,7 +32,7 @@ public class nobiru_cube : MonoBehaviour
 
     void Update()
     {
-        if (TCP.x_zahyo == -1)
+        if (SampleUDP.x_zahyo == -1)
         {
             growthDirection = 0;
         }
@@ -41,7 +41,7 @@ public class nobiru_cube : MonoBehaviour
         if (currentHeight < growthLimit)
         {
 
-            if (TCP.x_zahyo != -1)
+            if (SampleUDP.x_zahyo != -1)
             {
 
                 if (is_key == true)
@@ -93,7 +93,7 @@ public class nobiru_cube : MonoBehaviour
                 }
                 else
                 {
-                    growthDirection = (TCP.x_zahyo - 50) * set_segment.grow_speed_pub;
+                    growthDirection = (SampleUDP.x_zahyo - 50) * set_segment.grow_speed_pub;
 
 
 

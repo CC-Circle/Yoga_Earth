@@ -16,14 +16,14 @@ public class Sample_Scene : MonoBehaviour
     }
 
     // Update is called once per frame
-    async void Update()
+    void Update()
     {
         top_position_y = set_segment.top_position.y;
         if (top_position_y >= goal)
         {
             //Debug.Log("Goal!");
             TCP tcpScript = tcp.GetComponent<TCP>();
-            await tcpScript.DisconnectFromServerAsync();
+            //await tcpScript.DisconnectFromServerAsync();
             UnityEngine.SceneManagement.SceneManager.LoadScene("End");
         }
     }
