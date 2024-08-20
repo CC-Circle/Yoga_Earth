@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class camera_follo : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class camera_follo : MonoBehaviour
     private Camera mainCamera;
 
     [SerializeField] private GameObject set_segment_obj;
+    [SerializeField] private GameObject tcp;
 
     private float maxTreeHeight = 0.0f;
     private Vector3 targetPosition = new Vector3(0, 0, 0);
@@ -52,7 +54,10 @@ public class camera_follo : MonoBehaviour
         if (isMovedCamera == true)
         {
             // スコア表示のカメラ移動が終わったら、タイトル画面に遷移する
-            //Debug.Log("スコア表示のカメラ移動が終わった");
+            isMovedCamera = false;
+            Debug.Log("スコア表示のカメラ移動が終わった");
+
+            StartCoroutine(ToTitleScene());
         }
 
     }
@@ -122,6 +127,22 @@ public class camera_follo : MonoBehaviour
         // 確実に最終位置に到達する
         transform.position = endPosition;
         isMovedCamera = true;
+    }
+
+    IEnumerator ToTitleScene()
+    {
+        yield return new WaitForSeconds(5.0f);
+        MoveScene();
+
+        // タイトル画面に遷移
+
+    }
+
+    async void MoveScene()
+    {
+        TCP tcpScript = tcp.GetComponent<TCP>();
+        await tcpScript.DisconnectFromServerAsync();
+        SceneManager.LoadScene("Title");
     }
 
     private static float EaseOutBack(float x)

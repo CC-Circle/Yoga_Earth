@@ -1955,8 +1955,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dea1e41ff0934b7ea5220577f5aa08a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLimit: 120
-  tcp: {fileID: 0}
+  timeLimit: 10
+  tcp: {fileID: 916241858}
 --- !u!114 &527986204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3112,6 +3112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   set_segment_obj: {fileID: 1854217190}
+  tcp: {fileID: 916241858}
   overshoot: 10
 --- !u!43 &1025905377
 Mesh:
@@ -4950,7 +4951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grow_speed: 0.1
-  is_key: 1
+  is_key: 0
   cube_obj: {fileID: 2986815384033673886, guid: e8dfaf162af59407487da7270d35d5d4, type: 3}
 --- !u!114 &1854217193
 MonoBehaviour:
