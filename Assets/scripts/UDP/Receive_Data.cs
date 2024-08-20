@@ -45,7 +45,7 @@ public class Receive_Data : MonoBehaviour
         if (CenterHumanCnt > 5000)
         {
             Debug.Log("Center Human");
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Honban");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Tutorial");
         }
         if (isCenterHuman)
         {
@@ -67,7 +67,7 @@ public class Receive_Data : MonoBehaviour
         //スペースキーが押されたらシーン遷移
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Honban");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Tutorial");
         }
 
     }
