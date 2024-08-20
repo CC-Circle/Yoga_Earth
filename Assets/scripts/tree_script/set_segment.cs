@@ -1,9 +1,10 @@
 using UnityEngine;
 using System.Collections;
 
+
 public class set_segment : MonoBehaviour
 {
-    [SerializeField] float grow_speed = 0.2f;
+    [SerializeField] float start_grow_speed = 2f;
     public static float grow_speed_pub;
 
     [SerializeField] bool is_key = false;
@@ -29,10 +30,11 @@ public class set_segment : MonoBehaviour
 
     nobiru_cube nobiru_class;
 
+
     void Start()
     {
 
-        grow_speed_pub = grow_speed;
+        grow_speed_pub = start_grow_speed;
         is_key_pub = is_key;
         obj = Instantiate(cube_obj, new Vector3(0, 0, 0), Quaternion.identity);
         nobiru_class = obj.GetComponent<nobiru_cube>();
@@ -68,6 +70,7 @@ public class set_segment : MonoBehaviour
                 y_value += add_value;
                 obj = Instantiate(cube_obj, new Vector3(next_position.x + 0.475f, transform.position.y + y_value, transform.position.z), Quaternion.identity);
                 nobiru_class = obj.GetComponent<nobiru_cube>();
+                
                 branch_count++;
 
 
@@ -117,4 +120,49 @@ public class set_segment : MonoBehaviour
         top_position.x = topPosition.x + 0.475f;
         return topPosition;
     }
+
+
+
+    /// <summary>
+    /// 木の成長スピードを設定するメソッド
+    /// 渡し値:float
+    /// </summary>
+    /// <param name="growthSpeed"></param>
+    public void SetGrowthSpeed(float growthSpeed)
+    {
+        grow_speed_pub = growthSpeed;
+    }
+
+
+    /// <summary>
+    /// 現在の木の成長スピードを参照するためのメソッド
+    /// </summary>
+    /// <returns>float</returns>
+    public float GetGrowthSpeed()
+    {
+        return grow_speed_pub;
+    }
+
+    
+    /// <summary>
+    /// 現在の木の成長スピードを一定の倍率で調節するためのメソッド
+    /// (speed = speed*rate)
+    /// </summary>
+    /// <param name="growthRate"></param>
+    public void ModifyGrowthRate(float growthRate)
+    {
+
+        grow_speed_pub = grow_speed_pub * growthRate;
+    }
+
+
+    /// <summary>
+    /// 木の成長スピードを、インスペクターウィンドウで設定した最初の初期値に戻すメソッド
+    /// (speed = startspeed)
+    /// </summary>
+    public void ResetGrowSpeed()
+    {
+        grow_speed_pub = start_grow_speed;
+    }
+        
 }
