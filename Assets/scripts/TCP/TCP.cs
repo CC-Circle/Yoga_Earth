@@ -4,12 +4,19 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
+using System.Collections.Generic;
+
+using System.Net;
+
+using System.Collections;
+
 
 /// <summary>
 /// TCP通信を管理するクラスです。サーバーへの接続、メッセージの送信・受信、および接続の管理を行います。
 /// </summary>
 public class TCP : MonoBehaviour
 {
+    /*
     private TcpClient client;
     private NetworkStream stream;
     [Header("TCP設定")]
@@ -322,5 +329,105 @@ public class TCP : MonoBehaviour
         }
         Debug.Log("サーバーとの接続が終了しました");
         await Task.CompletedTask; // 非同期メソッドにしておく
+    }*/
+
+    // ポート番号
+    [SerializeField] private int port = 5005;
+
+    // UDPクライアント
+    private UdpClient server;
+
+    // 受信したデータを保持するキュー
+    private readonly Queue<string> receivedDataQueue = new();
+
+    private bool first = true;
+
+    public static int x_zahyo = 50;
+
+    void Start()
+    {
+        x_zahyo = 50;
+
+        // サーバーのIPアドレスを取得
+        IPAddress ipAddress = IPAddress.Any;
+
+        // UDPクライアントの作成
+        server = new UdpClient(port);
+        IPEndPoint endPoint = new(ipAddress, port);
+
+        //Debug.Log("UDPサーバーを起動しました");
+
+        // データ受信の非同期処理を開始
+        server.BeginReceive(ReceiveData, endPoint);
+
+        // データ処理を非同期的に行うコルーチンを開始
+        StartCoroutine(ProcessData());
     }
+
+    // データ受信時の処理
+    private void ReceiveData(IAsyncResult result)
+    {
+        // データと送信元のIPアドレスを取得
+        IPEndPoint endPoint = new(IPAddress.Any, port);
+        byte[] receivedBytes = server.EndReceive(result, ref endPoint);
+        string receivedMessage = Encoding.ASCII.GetString(receivedBytes);
+
+        //Debug.Log("受信したデータ: " + receivedMessage);
+
+        // 受信したデータをキューに追加
+        lock (receivedDataQueue)
+        {
+            receivedDataQueue.Enqueue(receivedMessage);
+        }
+
+        // 再度データ受信の準備
+        server.BeginReceive(ReceiveData, endPoint);
+    }
+
+    // データ処理のコルーチン
+    private IEnumerator ProcessData()
+    {
+        while (true)
+        {
+            string data = null;
+
+            // 受信データがあるか確認
+            lock (receivedDataQueue)
+            {
+                if (receivedDataQueue.Count > 0)
+                {
+                    data = receivedDataQueue.Dequeue();
+                }
+            }
+
+            // 受信データがあれば処理
+            if (data != null)
+            {
+                // 受信データを処理
+                //Debug.Log("受信データを処理: " + data);
+                if (x_zahyo != -1)
+                {
+                    x_zahyo = int.Parse(data);
+                }
+                else
+                {
+                    x_zahyo = int.Parse(data);
+                    // 送られてきたデータが-1の場合は、プレイヤーが正しく木のポーズをとっていない。
+                    // そのため、今回のプルリクでは、-1の場合は何もしないようにしています。
+
+                }
+                Debug.Log(x_zahyo);
+            }
+
+            // 1フレーム待機
+            yield return null;
+        }
+    }
+
+    void OnDestroy()
+    {
+        // UDPサーバーの終了
+        server?.Close();
+    }
+
 }

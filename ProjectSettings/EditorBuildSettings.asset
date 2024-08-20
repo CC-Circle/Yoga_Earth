@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Title.unity
     guid: 504ffe43f3d234ebb951c0649c651ca0
   - enabled: 0
@@ -14,7 +14,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/End.unity
     guid: 117c581d530844f05a436d6f1d583a9c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Yasui_Gimmick_Test.unity
     guid: 3709ace182fc448da9c19ef6ed3cc214
+  - enabled: 1
+    path: Assets/Scenes/test-0820.unity
+    guid: 6654e507c28114a8db2dea6175e63ac1
   m_configObjects: {}
