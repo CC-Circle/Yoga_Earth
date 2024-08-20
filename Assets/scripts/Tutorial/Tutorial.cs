@@ -9,6 +9,7 @@ public class Tutorial : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI derectionText;
+    [SerializeField] private GameObject TutorialObstacleSpawner;
 
     private bool firstProgressStarted = false;
     private bool firstProgressFinished = false;
@@ -20,12 +21,16 @@ public class Tutorial : MonoBehaviour
     private bool isReachedRight = false;
     private bool isReachedLeft = false;
 
+    private FloatingObstacleSpawner floatingObstacleSpawner;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
         Timer.isTimeUp = false;
+
+        floatingObstacleSpawner = TutorialObstacleSpawner.GetComponent<FloatingObstacleSpawner>();
     }
 
     // Update is called once per frame
@@ -66,6 +71,7 @@ public class Tutorial : MonoBehaviour
             thirdProgressStarted = true;
             derectionText.text = "Let's extend the tree while avoiding obstacles!";
             StartCoroutine(ThirdProgress());
+            StartCoroutine(floatingObstacleSpawner.ExecuteAtRandomIntervals());
         }
         if (thirdProgressFinished == true)
         {
@@ -139,7 +145,7 @@ public class Tutorial : MonoBehaviour
     IEnumerator ThirdProgress()
     {
         int currentTime = 0;
-        int timeLimit = 10;
+        int timeLimit = 25;
         while (currentTime < timeLimit)
         {
             timerText.text = "Limit: " + (timeLimit - currentTime);

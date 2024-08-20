@@ -535,6 +535,53 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8109e9e16ba4cc04b8e0928aea897927, type: 3}
+--- !u!1 &146838709
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 146838711}
+  - component: {fileID: 146838710}
+  m_Layer: 0
+  m_Name: TutorialObstacleSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &146838710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146838709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 645eb8877166047e78f18425f1852081, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatingObstaclePrefab: {fileID: 8190704190823978966, guid: 81f2de6c9b51948f69ea14c862d6e198, type: 3}
+  spawnInterval: 5
+  spawnProbability: 1
+--- !u!4 &146838711
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146838709}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 8, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &164381178
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1417,6 +1464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 36362962}
   derectionText: {fileID: 1104480881}
+  TutorialObstacleSpawner: {fileID: 146838709}
 --- !u!1 &444697237
 GameObject:
   m_ObjectHideFlags: 0
@@ -4720,7 +4768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grow_speed: 0.1
-  is_key: 0
+  is_key: 1
   cube_obj: {fileID: 2986815384033673886, guid: e8dfaf162af59407487da7270d35d5d4, type: 3}
 --- !u!114 &1854217193
 MonoBehaviour:
@@ -5181,3 +5229,4 @@ SceneRoots:
   - {fileID: 1191889345}
   - {fileID: 437106577}
   - {fileID: 941109255}
+  - {fileID: 146838711}

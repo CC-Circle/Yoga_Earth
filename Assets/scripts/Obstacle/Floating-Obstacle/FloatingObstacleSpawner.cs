@@ -13,7 +13,7 @@ public class FloatingObstacleSpawner : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(ExecuteAtRandomIntervals());
+        //StartCoroutine(ExecuteAtRandomIntervals());
     }
 
     void Update()
@@ -52,19 +52,18 @@ public class FloatingObstacleSpawner : MonoBehaviour
         }
     }
 
-    IEnumerator ExecuteAtRandomIntervals()
+    public IEnumerator ExecuteAtRandomIntervals()
     {
         while (true)
         {
-            // 一定の間隔を待つ
-            yield return new WaitForSeconds(spawnInterval);
-
             // 一定の確率で処理を実行
             if (Random.value <= spawnProbability)
             {
                 SpownFloatingObstacle();
                 //Debug.Log("Spawned a floating obstacle");
             }
+            // 一定の間隔を待つ
+            yield return new WaitForSeconds(spawnInterval);
         }
     }
 }
