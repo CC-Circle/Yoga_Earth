@@ -5,6 +5,7 @@ using UnityEngine;
 public class Title_Scene : MonoBehaviour
 {
     // Start is called before the first frame update
+    /*
     private int pose_cnt = 0;
     [SerializeField] private int GameStart;
     void Start()
@@ -38,4 +39,5 @@ public class Title_Scene : MonoBehaviour
             pose_cnt = -500;
         }
     }
+    */
 }
