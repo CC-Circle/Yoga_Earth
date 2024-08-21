@@ -19,11 +19,6 @@ public class Sample_Scene : MonoBehaviour
     void Update()
     {
         top_position_y = set_segment.top_position.y;
-        //もしスペースキーが押されたら
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Title");
-        }
         /*
         if (top_position_y >= goal)
         {
