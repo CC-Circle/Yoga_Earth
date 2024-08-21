@@ -1,15 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI derectionText;
     [SerializeField] private GameObject TutorialObstacleSpawner;
+
+    [SerializeField] private UnityEngine.UI.Image rightGoal;
+    [SerializeField] private UnityEngine.UI.Image leftGoal;
 
     private bool firstProgressStarted = false;
     private bool firstProgressFinished = false;
@@ -31,6 +36,9 @@ public class Tutorial : MonoBehaviour
         Timer.isTimeUp = false;
 
         floatingObstacleSpawner = TutorialObstacleSpawner.GetComponent<FloatingObstacleSpawner>();
+
+        rightGoal.enabled = false;
+        leftGoal.enabled = false;
     }
 
     // Update is called once per frame
@@ -46,17 +54,25 @@ public class Tutorial : MonoBehaviour
 
         if (firstProgressFinished == true && secondProgressFinished == false)
         {
+            rightGoal.enabled = true;
+            leftGoal.enabled = true;
             derectionText.text = "Tilt your body to tilt the tree left or right in the screen!";
             timerText.text = "";
             //Debug.Log(set_segment.top_position.x);
             if (set_segment.top_position.x > 2.5f)
             {
                 isReachedRight = true;
+                //rightGoalの色を緑に変える
+                rightGoal.color = new Color(0, 1, 0, 0.27f);
+
                 //Debug.Log("Reached Right");
             }
             else if (set_segment.top_position.x < -1.5f)
             {
                 isReachedLeft = true;
+                //leftGoalの色を緑に変える
+                leftGoal.color = new Color(0, 1, 0, 0.27f);
+
                 //Debug.Log("Reached Left");
             }
 
@@ -151,6 +167,9 @@ public class Tutorial : MonoBehaviour
             timerText.text = "Limit: " + (timeLimit - currentTime);
             // 1秒待機
             yield return new WaitForSeconds(1);
+
+            rightGoal.enabled = false;
+            leftGoal.enabled = false;
 
             // 時間をカウント
             currentTime++;
