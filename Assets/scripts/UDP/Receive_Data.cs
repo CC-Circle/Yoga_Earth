@@ -5,6 +5,7 @@ using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using TMPro;
 
 public class Receive_Data : MonoBehaviour
 {
@@ -19,6 +20,9 @@ public class Receive_Data : MonoBehaviour
 
     private static bool isCenterHuman = false;
     private static int CenterHumanCnt = 0;
+
+
+    [SerializeField] private TextMeshProUGUI debugText;
 
     void Start()
     {
@@ -38,11 +42,13 @@ public class Receive_Data : MonoBehaviour
 
         // データ処理を非同期的に行うコルーチンを開始
         StartCoroutine(ProcessData());
+
+        debugText.text = "0";
     }
 
     void Update()
     {
-        if (CenterHumanCnt > 5000)
+        if (CenterHumanCnt > 500)
         {
             Debug.Log("Center Human");
             UnityEngine.SceneManagement.SceneManager.LoadScene("Tutorial");
@@ -53,21 +59,32 @@ public class Receive_Data : MonoBehaviour
         }
         else
         {
-            if (CenterHumanCnt > 150)
+            if (CenterHumanCnt > 100)
             {
-                CenterHumanCnt -= 150;
+                CenterHumanCnt -= 100;
             }
         }
 
-        if (CenterHumanCnt % 500 == 0 && CenterHumanCnt != 0)
+        if (CenterHumanCnt % 100 == 0 && CenterHumanCnt != 0)
         {
             Debug.Log(CenterHumanCnt);
+            debugText.text = CenterHumanCnt.ToString();
         }
 
-        //スペースキーが押されたらシーン遷移
-        if (Input.GetKeyDown(KeyCode.Space))
+        //もし1キーが押されたら
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Title");
+        }
+        //もし2キーが押されたら
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("Tutorial");
+        }
+        //もし3キーが押されたら
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Honban");
         }
 
     }
