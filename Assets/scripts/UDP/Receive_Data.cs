@@ -6,9 +6,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using TMPro;
+using UnityEngine.UI;
 
 public class Receive_Data : MonoBehaviour
 {
+
     // ポート番号
     [SerializeField] private int port = 5005;
 
@@ -23,6 +25,12 @@ public class Receive_Data : MonoBehaviour
 
 
     [SerializeField] private TextMeshProUGUI debugText;
+
+    [SerializeField] private Image gauge1;
+    [SerializeField] private Image gauge2;
+    [SerializeField] private Image gauge3;
+    [SerializeField] private Image gauge4;
+    [SerializeField] private Image gauge5;
 
     void Start()
     {
@@ -44,6 +52,12 @@ public class Receive_Data : MonoBehaviour
         StartCoroutine(ProcessData());
 
         debugText.text = "0";
+
+        gauge1.enabled = false;
+        gauge2.enabled = false;
+        gauge3.enabled = false;
+        gauge4.enabled = false;
+        gauge5.enabled = false;
     }
 
     void Update()
@@ -69,6 +83,27 @@ public class Receive_Data : MonoBehaviour
         {
             Debug.Log(CenterHumanCnt);
             debugText.text = CenterHumanCnt.ToString();
+        }
+
+        if (CenterHumanCnt == 100)
+        {
+            gauge1.enabled = true;
+        }
+        if (CenterHumanCnt == 200)
+        {
+            gauge2.enabled = true;
+        }
+        if (CenterHumanCnt == 300)
+        {
+            gauge3.enabled = true;
+        }
+        if (CenterHumanCnt == 400)
+        {
+            gauge4.enabled = true;
+        }
+        if (CenterHumanCnt == 500)
+        {
+            gauge5.enabled = true;
         }
 
         //もし1キーが押されたら
