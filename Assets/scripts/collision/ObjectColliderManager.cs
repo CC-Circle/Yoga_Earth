@@ -3,8 +3,14 @@ using UnityEngine;
 
 public class ObjectColliderManager : MonoBehaviour
 {
+
     private List<GameObject> createdObjects = new List<GameObject>();
-    
+
+    void Start()
+    {
+        //Debug.Log("HogeHoge!!!");
+    }
+
     void Update()
     {
         // 名前を使って特定のオブジェクトを取得
@@ -17,9 +23,9 @@ public class ObjectColliderManager : MonoBehaviour
                 // Debug.Log("Added object: " + obj.name); // デバッグ用
             }
         }
-        
+
         UpdateColliders();
-        DebugObjectsList(); // デバッグ用
+        //DebugObjectsList(); // デバッグ用
     }
 
     void UpdateColliders()
@@ -35,6 +41,7 @@ public class ObjectColliderManager : MonoBehaviour
                 if (collider == null)
                 {
                     obj.AddComponent<BoxCollider>(); // 必要に応じて他のコライダーに変更
+                    //Debug.Log("Added collider to object: " + obj.name);
                 }
             }
             else
@@ -56,4 +63,5 @@ public class ObjectColliderManager : MonoBehaviour
             // Debug.Log("Object " + i + ": " + createdObjects[i].name); // 各オブジェクトの名前を表示
         }
     }
+
 }

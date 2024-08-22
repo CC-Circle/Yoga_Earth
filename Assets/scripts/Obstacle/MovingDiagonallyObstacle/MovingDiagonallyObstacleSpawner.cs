@@ -14,7 +14,7 @@ public class MovingDiagonallyObstacleSpawner : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(ExecuteAtRandomIntervals());
+        //StartCoroutine(ExecuteAtRandomIntervals());
     }
 
     private void SetSpawnPosition(Vector3 spawnPosition)
@@ -78,6 +78,14 @@ public class MovingDiagonallyObstacleSpawner : MonoBehaviour
         if (movingDiagonallyObstaclePrefab != null)
         {
             GameObject obstacle = Instantiate(movingDiagonallyObstaclePrefab, GetSpawnPosition(), Quaternion.identity);
+            //obstacleのGetSpawnPosition()とtargetPositionから角度を計算
+            float angle = Mathf.Atan2(targetPosition.y - GetSpawnPosition().y, targetPosition.x - GetSpawnPosition().x) * Mathf.Rad2Deg;
+            if (GetSpawnPosition().x > 0)
+            {
+                //angle *= -1;
+            }
+            obstacle.transform.rotation = Quaternion.Euler(0, 0, angle - 100);
+
             MovingDiagonallyObstacle obstacleScript = obstacle.GetComponent<MovingDiagonallyObstacle>();
             if (obstacleScript != null)
             {
@@ -94,7 +102,7 @@ public class MovingDiagonallyObstacleSpawner : MonoBehaviour
         }
     }
 
-    private IEnumerator ExecuteAtRandomIntervals()
+    public IEnumerator ExecuteAtRandomIntervals()
     {
         while (true)
         {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class FloatingObstacle : MonoBehaviour
@@ -13,10 +14,19 @@ public class FloatingObstacle : MonoBehaviour
     // ゲームオブジェクトが視界外にいるかどうかを追跡するフラグ
     private bool isOutsideView = false;
 
+    //[SerializeField] private GameObject floatingObstacleObj;
+    private GameObject TimerObj;
+    Timer timerScript;
+
 
     void Start()
     {
         //Debug.Log("FloatingObstacle script is attached to " + gameObject.name);
+        //Debug.Log("Hello, World!");
+        //timerScript = floatingObstacleObj.GetComponent<Timer>();
+
+        TimerObj = GameObject.Find("Timer");
+        timerScript = TimerObj.GetComponent<Timer>();
     }
 
     void Update()
@@ -32,6 +42,10 @@ public class FloatingObstacle : MonoBehaviour
                 Destroy(gameObject);
                 //Debug.Log("Destroyed object: " + gameObject.name);
             }
+        }
+        if (Timer.isTimeUp)
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -50,14 +64,18 @@ public class FloatingObstacle : MonoBehaviour
 
     void OnTriggerEnter(Collider Collider)
     {
-        Debug.Log("接触したオブジェクト：" + gameObject.name);
+        //Debug.Log("接触したオブジェクト：" + gameObject.name);
         //Debug.Log("接触されたオブジェクト：" + Collider.gameObject.name);
-
-        // ゲームオブジェクトにアタッチされているコライダーを取得
-        if (TryGetComponent(out Collider collider))
+        if (Collider.gameObject.name == "Cylinder (1)(Clone)")
         {
-            // コライダーが存在する場合、それを削除
-            Destroy(collider);
+            timerScript.PenaltyTime(5);
+            //Debug.Log("接触したオブジェクト：" + gameObject.name);
+            // ゲームオブジェクトにアタッチされているコライダーを取得
+            if (TryGetComponent(out Collider collider))
+            {
+                // コライダーが存在する場合、それを削除
+                Destroy(collider);
+            }
         }
     }
 }

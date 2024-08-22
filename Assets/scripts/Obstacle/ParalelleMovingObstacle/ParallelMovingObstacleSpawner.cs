@@ -15,7 +15,7 @@ public class ParallelMovingObstacleSpawner : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(ExecuteAtRandomIntervals());
+        //StartCoroutine(ExecuteAtRandomIntervals());
     }
 
     private void SetSpawnPosition(Vector3 spawnPosition)
@@ -61,6 +61,14 @@ public class ParallelMovingObstacleSpawner : MonoBehaviour
         if (parallelMovingObstaclePrefab != null)
         {
             GameObject obstacle = Instantiate(parallelMovingObstaclePrefab, GetSpawnPosition(), Quaternion.identity);
+            if (GetSpawnPosition().x > 0)
+            {
+                obstacle.transform.Rotate(0, -90, 0);
+            }
+            else
+            {
+                obstacle.transform.Rotate(0, 90, 0);
+            }
             ParallelMovingObstacle obstacleScript = obstacle.GetComponent<ParallelMovingObstacle>();
             if (obstacleScript != null)
             {
@@ -77,7 +85,7 @@ public class ParallelMovingObstacleSpawner : MonoBehaviour
         }
     }
 
-    private IEnumerator ExecuteAtRandomIntervals()
+    public IEnumerator ExecuteAtRandomIntervals()
     {
         while (true)
         {
