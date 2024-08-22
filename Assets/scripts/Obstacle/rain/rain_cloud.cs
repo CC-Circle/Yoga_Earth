@@ -24,7 +24,7 @@ public class rain_cloud : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(ExecuteAtRandomIntervals());
+        //StartCoroutine(ExecuteAtRandomIntervals());
     }
 
     void Update()
@@ -48,7 +48,7 @@ public class rain_cloud : MonoBehaviour
         //float Float_x= x*2.8f;
 
         // 将来的に、set_segment.top_position.yをgetTopPositionY()を使って取得するように変更
-        SetSpawnPosition(new Vector3(x, set_segment.top_position.y + 9.0f, 0));    
+        SetSpawnPosition(new Vector3(x, set_segment.top_position.y + 9.0f, 0));
     }
 
     private void SpownFloatingObstacle()
@@ -65,7 +65,7 @@ public class rain_cloud : MonoBehaviour
         }
     }
 
-    IEnumerator ExecuteAtRandomIntervals()
+    public IEnumerator ExecuteAtRandomIntervals()
     {
         while (true)
         {
@@ -81,10 +81,10 @@ public class rain_cloud : MonoBehaviour
             }
             else
             {
-                spawnProbability = spawnProbability + spawnProbability*0.1f + 0.2f;
+                spawnProbability = spawnProbability + spawnProbability * 0.1f + 0.2f;
             }
         }
     }
 
-    
+
 }

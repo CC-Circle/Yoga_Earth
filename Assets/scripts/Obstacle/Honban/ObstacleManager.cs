@@ -12,6 +12,8 @@ public class ObstacleManager : MonoBehaviour
     MovingDiagonallyObstacleSpawner movingDiagonallyObstacleSpawnerScript;
     [SerializeField] private GameObject ComingFrontObstacleSpawner;
     ComingFrontObstacleSpawner comingFrontObstacleSpawnerScript;
+    [SerializeField] private GameObject rainCloudObj;
+    rain_cloud rainCloudScript;
 
 
     private bool isSpawnStart = false;
@@ -23,6 +25,7 @@ public class ObstacleManager : MonoBehaviour
         parallelMovingObstacleSpawnerScript = parallelMovingObstacleSpawner.GetComponent<ParallelMovingObstacleSpawner>();
         movingDiagonallyObstacleSpawnerScript = movingDiagonallyObstacleSpawner.GetComponent<MovingDiagonallyObstacleSpawner>();
         comingFrontObstacleSpawnerScript = ComingFrontObstacleSpawner.GetComponent<ComingFrontObstacleSpawner>();
+        rainCloudScript = rainCloudObj.GetComponent<rain_cloud>();
     }
 
     // Update is called once per frame
@@ -36,6 +39,7 @@ public class ObstacleManager : MonoBehaviour
             StartCoroutine(parallelMovingObstacleSpawnerScript.ExecuteAtRandomIntervals());
             StartCoroutine(movingDiagonallyObstacleSpawnerScript.ExecuteAtRandomIntervals());
             StartCoroutine(comingFrontObstacleSpawnerScript.ExecuteAtRandomIntervals());
+            StartCoroutine(rainCloudScript.ExecuteAtRandomIntervals());
         }
     }
 }

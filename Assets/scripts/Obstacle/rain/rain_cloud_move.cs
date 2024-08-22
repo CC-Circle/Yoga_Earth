@@ -15,12 +15,12 @@ public class rain_cloud_move : MonoBehaviour
 
     public GameObject rain_pa;
     public GameObject rain_coll;
-    
+
 
     [SerializeField]
     Renderer[] renderers = { };
-    
-    
+
+
     Ease effectEase = Ease.Linear;
     [SerializeField]
     string progressParamName = "_Progress";
@@ -28,6 +28,11 @@ public class rain_cloud_move : MonoBehaviour
     List<Material> materials = new List<Material>();
     Sequence sequence;
     BoxCollider Box;
+
+    private GameObject TimerObj;
+    Timer timerScript;
+
+    private bool isHitTree = false;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +42,9 @@ public class rain_cloud_move : MonoBehaviour
         Box = GetComponent<BoxCollider>();
         Box.enabled = false;
         //rain_pa.Stop();
+
+        TimerObj = GameObject.Find("Timer");
+        timerScript = TimerObj.GetComponent<Timer>();
     }
 
     // Update is called once per frame
@@ -44,17 +52,21 @@ public class rain_cloud_move : MonoBehaviour
     {
         if (transform.position.y - set_segment.top_position.y < 3.5)
         {
-            transform.position = new Vector3(transform.position.x, set_segment.top_position.y+3.5f, 0);
+            transform.position = new Vector3(transform.position.x, set_segment.top_position.y + 3.5f, 0);
 
-            
+
+        }
+        if (Timer.isTimeUp)
+        {
+            Destroy(gameObject);
         }
 
-        
+
     }
 
     IEnumerator ExecuteAtRandomIntervals()
     {
-        
+
         // 一定の間隔を待つ
         yield return new WaitForSeconds(waittime);
         rain_pa.SetActive(true);
@@ -109,13 +121,18 @@ public class rain_cloud_move : MonoBehaviour
         sequence.Play();
     }
 
-    
+
 
     void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("tree"))
         {
-        Debug.Log($"Hittag{other.gameObject.tag}");
+            if (!isHitTree)
+            {
+                timerScript.PenaltyTime(10);
+                Debug.Log($"Hittag{other.gameObject.tag}");
+            }
+            isHitTree = true;
         }
     }
 }

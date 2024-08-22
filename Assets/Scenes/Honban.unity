@@ -2947,6 +2947,57 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1253365200111565818, guid: 8109e9e16ba4cc04b8e0928aea897927, type: 3}
   m_PrefabInstance: {fileID: 293308314}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &884470562
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 884470564}
+  - component: {fileID: 884470563}
+  m_Layer: 0
+  m_Name: rain_cloud
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &884470563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884470562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9e8933dd34b74ac8815c7095540f340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatingObstaclePrefab: {fileID: 6351068900760099042, guid: 6da7efd4842084e07b48dc5b3df48960, type: 3}
+  spawnInterval: 40
+  spawnProbability: 1
+  waittime: 7
+  durasion_rain: 10
+  dissolve_start_time: 0
+  effectDuration: 3
+--- !u!4 &884470564
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884470562}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &941109252
 GameObject:
   m_ObjectHideFlags: 0
@@ -3376,6 +3427,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8109e9e16ba4cc04b8e0928aea897927, type: 3}
+--- !u!1001 &1076639713
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5202389642615269598, guid: 6da7efd4842084e07b48dc5b3df48960, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202389642615269598, guid: 6da7efd4842084e07b48dc5b3df48960, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 12.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202389642615269598, guid: 6da7efd4842084e07b48dc5b3df48960, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202389642615269598, guid: 6da7efd4842084e07b48dc5b3df48960, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202389642615269598, guid: 6da7efd4842084e07b48dc5b3df48960, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202389642615269598, guid: 6da7efd4842084e07b48dc5b3df48960, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202389642615269598, guid: 6da7efd4842084e07b48dc5b3df48960, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202389642615269598, guid: 6da7efd4842084e07b48dc5b3df48960, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202389642615269598, guid: 6da7efd4842084e07b48dc5b3df48960, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202389642615269598, guid: 6da7efd4842084e07b48dc5b3df48960, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6351068900760099042, guid: 6da7efd4842084e07b48dc5b3df48960, type: 3}
+      propertyPath: m_Name
+      value: Clouds_Cumulonimbus_G1 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6351068900760099042, guid: 6da7efd4842084e07b48dc5b3df48960, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6da7efd4842084e07b48dc5b3df48960, type: 3}
 --- !u!1001 &1093487409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4480,6 +4592,7 @@ MonoBehaviour:
   parallelMovingObstacleSpawner: {fileID: 1930591989}
   movingDiagonallyObstacleSpawner: {fileID: 2132029099}
   ComingFrontObstacleSpawner: {fileID: 1345093260}
+  rainCloudObj: {fileID: 884470562}
 --- !u!4 &1388947478
 Transform:
   m_ObjectHideFlags: 0
@@ -4980,8 +5093,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grow_speed: 0.1
-  is_key: 0
+  is_key: 1
   cube_obj: {fileID: 2986815384033673886, guid: e8dfaf162af59407487da7270d35d5d4, type: 3}
+  parentTran: {fileID: 0}
 --- !u!114 &1854217193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5722,7 +5836,9 @@ SceneRoots:
   - {fileID: 1930591991}
   - {fileID: 2132029101}
   - {fileID: 1345093262}
+  - {fileID: 884470564}
   - {fileID: 1388947478}
   - {fileID: 2112318405}
   - {fileID: 6395229413293361865}
   - {fileID: 1772617958736069723}
+  - {fileID: 1076639713}
