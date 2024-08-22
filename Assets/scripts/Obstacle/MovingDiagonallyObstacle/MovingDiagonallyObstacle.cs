@@ -5,7 +5,7 @@ using UnityEngine;
 public class MovingDiagonallyObstacle : MonoBehaviour
 {
     // メインカメラの外にいると判断されるまでの時間（秒）
-    [SerializeField] private float timeOutsideViewThreshold = 3.0f;
+    [SerializeField] private float timeOutsideViewThreshold = 1.0f;
 
     // メインカメラの外にいる時間をカウントするための変数
     private float timeOutsideView = 0.0f;
