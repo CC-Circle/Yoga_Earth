@@ -42,7 +42,12 @@ public class Timer : MonoBehaviour
         //もし-を押したら、時間を減らす
         if (Input.GetKeyDown(KeyCode.Minus))
         {
-            PenaltyTime(3);
+            PenaltyTime(10);
+        }
+        //もし+を押したら、時間を増やす
+        if (Input.GetKeyDown(KeyCode.Plus))
+        {
+            AddBonusTime(10);
         }
     }
 
@@ -103,7 +108,8 @@ public class Timer : MonoBehaviour
 
     public void PenaltyTime(int penaltyTime)
     {
-        Debug.Log("PenaltyTime");
+        //Debug.Log("PenaltyTime");
+        StartCoroutine(TextColorRed());
         if (GetRemainingTime() - penaltyTime <= 0)
         {
             currentTime = timeLimit;
@@ -112,5 +118,13 @@ public class Timer : MonoBehaviour
         {
             currentTime += penaltyTime;
         }
+    }
+
+    private IEnumerator TextColorRed()
+    {
+        // タイマーの色を赤色に変更
+        timerText.color = Color.red;
+        yield return new WaitForSeconds(1);
+        timerText.color = Color.white;
     }
 }
