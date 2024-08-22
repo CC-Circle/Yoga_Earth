@@ -151,5 +151,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0cb01036453540fba9c43941e2ee292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeOutsideViewThreshold: 3
+  timeOutsideViewThreshold: 1
   moveSpeed: 1

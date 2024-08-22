@@ -95,7 +95,7 @@ public class ComingFrontObstacleSpawner : MonoBehaviour
 
     }
 
-    IEnumerator ExecuteAtRandomIntervals()
+    public IEnumerator ExecuteAtRandomIntervals()
     {
         while (true)
         {

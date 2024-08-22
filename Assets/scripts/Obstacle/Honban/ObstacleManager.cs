@@ -10,6 +10,9 @@ public class ObstacleManager : MonoBehaviour
     ParallelMovingObstacleSpawner parallelMovingObstacleSpawnerScript;
     [SerializeField] private GameObject movingDiagonallyObstacleSpawner;
     MovingDiagonallyObstacleSpawner movingDiagonallyObstacleSpawnerScript;
+    [SerializeField] private GameObject ComingFrontObstacleSpawner;
+    ComingFrontObstacleSpawner comingFrontObstacleSpawnerScript;
+
 
     private bool isSpawnStart = false;
 
@@ -19,6 +22,7 @@ public class ObstacleManager : MonoBehaviour
         floatingObstacleSpawnerScript = floatingObstacleSpawner.GetComponent<FloatingObstacleSpawner>();
         parallelMovingObstacleSpawnerScript = parallelMovingObstacleSpawner.GetComponent<ParallelMovingObstacleSpawner>();
         movingDiagonallyObstacleSpawnerScript = movingDiagonallyObstacleSpawner.GetComponent<MovingDiagonallyObstacleSpawner>();
+        comingFrontObstacleSpawnerScript = ComingFrontObstacleSpawner.GetComponent<ComingFrontObstacleSpawner>();
     }
 
     // Update is called once per frame
@@ -26,10 +30,12 @@ public class ObstacleManager : MonoBehaviour
     {
         if (Timer.isGameStart && !isSpawnStart)
         {
+            Debug.Log("ObstacleManager: Start spawning obstacles");
             isSpawnStart = true;
-            //StartCoroutine(floatingObstacleSpawnerScript.ExecuteAtRandomIntervals());
-            //StartCoroutine(parallelMovingObstacleSpawnerScript.ExecuteAtRandomIntervals());
+            StartCoroutine(floatingObstacleSpawnerScript.ExecuteAtRandomIntervals());
+            StartCoroutine(parallelMovingObstacleSpawnerScript.ExecuteAtRandomIntervals());
             StartCoroutine(movingDiagonallyObstacleSpawnerScript.ExecuteAtRandomIntervals());
+            StartCoroutine(comingFrontObstacleSpawnerScript.ExecuteAtRandomIntervals());
         }
     }
 }

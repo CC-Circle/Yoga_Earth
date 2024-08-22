@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d76c7bb3517894e85a78a093fdf59dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeOutsideViewThreshold: 3
+  timeOutsideViewThreshold: 1
   moveSpeed: 1
 --- !u!1 &4945622884380992546
 GameObject:
