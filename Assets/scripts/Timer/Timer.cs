@@ -16,6 +16,9 @@ public class Timer : MonoBehaviour
 
     public static bool isGameStart = false;
 
+    [SerializeField] private GameObject sampleBGMObj;
+    private HonbanBGM honbanBGM;
+
 
     void Start()
     {
@@ -25,6 +28,8 @@ public class Timer : MonoBehaviour
 
         set_segment set_segmentScript = set_segment_obj.GetComponent<set_segment>();
         set_segmentScript.enabled = false;
+
+        honbanBGM = sampleBGMObj.GetComponent<HonbanBGM>();
     }
 
     void Update()
@@ -91,6 +96,7 @@ public class Timer : MonoBehaviour
         // タイマーが終了した時の処理
         Debug.Log("Time's up!");
         isTimeUp = true;
+        honbanBGM.ChangeBGM();
         //SaveScore saveScore = FindObjectOfType<SaveScore>();
         //saveScore.SaveNewScore((int)set_segment.top_position.y);
         // ここで、スコア表示のカメラ移動のプログラムを呼び出す
