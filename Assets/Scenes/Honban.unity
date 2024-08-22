@@ -337,7 +337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e58aa13d8bb442f83ff7d1273e830b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLimit: 100
+  timeLimit: 10
   timerText: {fileID: 36362962}
   countdownText: {fileID: 545057303}
   set_segment_obj: {fileID: 1854217190}
