@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
+//using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
-using Unity.VisualScripting;
+//using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,8 +13,8 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private TextMeshProUGUI derectionText;
     [SerializeField] private GameObject TutorialObstacleSpawner;
 
-    [SerializeField] private UnityEngine.UI.Image rightGoal;
-    [SerializeField] private UnityEngine.UI.Image leftGoal;
+    [SerializeField] private Image rightGoal;
+    [SerializeField] private Image leftGoal;
 
     private bool firstProgressStarted = false;
     private bool firstProgressFinished = false;
