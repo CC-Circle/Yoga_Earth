@@ -28,6 +28,7 @@ public class set_segment : MonoBehaviour
     int branch_count = 0;
 
     nobiru_cube nobiru_class;
+    public Transform parentTran;
 
     void Start()
     {
@@ -69,7 +70,7 @@ public class set_segment : MonoBehaviour
                 obj = Instantiate(cube_obj, new Vector3(next_position.x + 0.475f, transform.position.y + y_value, transform.position.z), Quaternion.identity);
                 nobiru_class = obj.GetComponent<nobiru_cube>();
                 branch_count++;
-
+                obj.transform.SetParent(parentTran);
 
 
             }
