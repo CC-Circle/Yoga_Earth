@@ -5,7 +5,7 @@ using UnityEngine;
 public class ParallelMovingObstacle : MonoBehaviour
 {
     // メインカメラの外にいると判断されるまでの時間（秒）
-    [SerializeField] private float timeOutsideViewThreshold = 3.0f;
+    [SerializeField] private float timeOutsideViewThreshold = 1.0f;
 
     // メインカメラの外にいる時間をカウントするための変数
     private float timeOutsideView = 0.0f;
@@ -15,10 +15,15 @@ public class ParallelMovingObstacle : MonoBehaviour
 
     [SerializeField] float moveSpeed = 1.0f;
 
+    private GameObject TimerObj;
+    Timer timerScript;
+
 
     void Start()
     {
         //Debug.Log("FloatingObstacle script is attached to " + gameObject.name);
+        TimerObj = GameObject.Find("Timer");
+        timerScript = TimerObj.GetComponent<Timer>();
     }
 
     void Update()
@@ -35,11 +40,15 @@ public class ParallelMovingObstacle : MonoBehaviour
                 //Debug.Log("Destroyed object: " + gameObject.name);
             }
         }
+        if (Timer.isTimeUp)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void StartMoveParallelMovingObstacle(Vector3 targetPosition, float time)
     {
-        Debug.Log("StartMoveParallelMovingObstacle");
+        //Debug.Log("StartMoveParallelMovingObstacle");
         StartCoroutine(MoveParallelMovingObstacle(targetPosition, time));
     }
 
@@ -84,14 +93,18 @@ public class ParallelMovingObstacle : MonoBehaviour
 
     void OnTriggerEnter(Collider Collider)
     {
-        Debug.Log("接触したオブジェクト：" + gameObject.name);
+        //Debug.Log("接触したオブジェクト：" + gameObject.name);
         //Debug.Log("接触されたオブジェクト：" + Collider.gameObject.name);
-
-        // ゲームオブジェクトにアタッチされているコライダーを取得
-        if (TryGetComponent(out Collider collider))
+        if (Collider.gameObject.name == "Cylinder (1)(Clone)")
         {
-            // コライダーが存在する場合、それを削除
-            Destroy(collider);
+            timerScript.PenaltyTime(5);
+            //Debug.Log("接触したオブジェクト：" + gameObject.name);
+            // ゲームオブジェクトにアタッチされているコライダーを取得
+            if (TryGetComponent(out Collider collider))
+            {
+                // コライダーが存在する場合、それを削除
+                Destroy(collider);
+            }
         }
     }
 }

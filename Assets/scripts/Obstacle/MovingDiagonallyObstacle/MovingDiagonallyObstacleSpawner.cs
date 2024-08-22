@@ -14,7 +14,7 @@ public class MovingDiagonallyObstacleSpawner : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(ExecuteAtRandomIntervals());
+        //StartCoroutine(ExecuteAtRandomIntervals());
     }
 
     private void SetSpawnPosition(Vector3 spawnPosition)
@@ -94,7 +94,7 @@ public class MovingDiagonallyObstacleSpawner : MonoBehaviour
         }
     }
 
-    private IEnumerator ExecuteAtRandomIntervals()
+    public IEnumerator ExecuteAtRandomIntervals()
     {
         while (true)
         {

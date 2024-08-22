@@ -14,12 +14,13 @@ public class Timer : MonoBehaviour
 
     public static bool isTimeUp = false;
 
-    private bool isGameStart = false;
+    public static bool isGameStart = false;
 
 
     void Start()
     {
         isTimeUp = false;
+        isGameStart = false;
         StartCoroutine(StartTimer());
 
         set_segment set_segmentScript = set_segment_obj.GetComponent<set_segment>();
@@ -29,7 +30,14 @@ public class Timer : MonoBehaviour
     void Update()
     {
         int remainingTime = GetRemainingTime();
-        timerText.text = "Limit: " + remainingTime;
+        if (remainingTime < 0)
+        {
+            remainingTime = 0;
+        }
+        else
+        {
+            timerText.text = "Limit: " + remainingTime;
+        }
 
         //もし-を押したら、時間を減らす
         if (Input.GetKeyDown(KeyCode.Minus))
@@ -71,7 +79,7 @@ public class Timer : MonoBehaviour
 
             // 時間をカウント
             currentTime++;
-            Debug.Log("Time: " + currentTime);
+            //Debug.Log("Time: " + currentTime);
         }
         StopCoroutine(StartTimer());
 
@@ -95,7 +103,8 @@ public class Timer : MonoBehaviour
 
     public void PenaltyTime(int penaltyTime)
     {
-        if (GetRemainingTime() - penaltyTime < 0)
+        Debug.Log("PenaltyTime");
+        if (GetRemainingTime() - penaltyTime <= 0)
         {
             currentTime = timeLimit;
         }
