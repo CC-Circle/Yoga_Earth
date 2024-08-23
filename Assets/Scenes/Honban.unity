@@ -337,7 +337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e58aa13d8bb442f83ff7d1273e830b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLimit: 100
+  timeLimit: 5
   timerText: {fileID: 36362962}
   countdownText: {fileID: 545057303}
   set_segment_obj: {fileID: 1854217190}
@@ -3573,9 +3573,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 922eccce6815f4a8f8e5449ec6041110, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 28b972c4f342040139b93c427dab4153, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.35
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3687,6 +3687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newBGM: {fileID: 8300000, guid: 1b598ce152fd44e0d8feb2665193c81e, type: 3}
+  finishSE: {fileID: 8300000, guid: 2351f942bb6024671927b942a09ffac2, type: 3}
 --- !u!1001 &1210030595
 PrefabInstance:
   m_ObjectHideFlags: 0

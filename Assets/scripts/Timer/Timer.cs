@@ -95,7 +95,10 @@ public class Timer : MonoBehaviour
 
         // タイマーが終了した時の処理
         Debug.Log("Time's up!");
+        honbanBGM.StopBGM();
+        honbanBGM.PlayFinishSE();
         isTimeUp = true;
+        yield return new WaitForSeconds(1.411f);
         honbanBGM.ChangeBGM();
         //SaveScore saveScore = FindObjectOfType<SaveScore>();
         //saveScore.SaveNewScore((int)set_segment.top_position.y);
