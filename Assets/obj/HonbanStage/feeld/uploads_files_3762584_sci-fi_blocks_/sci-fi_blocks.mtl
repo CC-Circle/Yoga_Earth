@@ -1,0 +1,25 @@
+# Blender 3.1.0 MTL File: 'sci-fi_blocks.blend'
+# www.blender.org
+
+newmtl Sci-Fi_Emission
+Ns 360.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 8.626455 4.620409 2.179954
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Sci-Fi_Material
+Ns 250.000000
+Ka 0.263636 0.263636 0.263636
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Ns  ..\scifi_material_Roughness.png
+map_refl  ..\scifi_material_Metallic.png
+map_Bump  -bm 1.000000 ..\scifi_material_Normal_OpenGL.png
