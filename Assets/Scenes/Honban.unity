@@ -3687,6 +3687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newBGM: {fileID: 8300000, guid: 1b598ce152fd44e0d8feb2665193c81e, type: 3}
+  finishSE: {fileID: 8300000, guid: 2351f942bb6024671927b942a09ffac2, type: 3}
 --- !u!1001 &1210030595
 PrefabInstance:
   m_ObjectHideFlags: 0

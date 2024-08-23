@@ -6,6 +6,7 @@ public class HonbanBGM : MonoBehaviour
 {
     private AudioSource audioSource;    // AudioSource コンポーネントを指定
     [SerializeField] AudioClip newBGM;           // 新しい BGM の AudioClip
+    [SerializeField] AudioClip finishSE;
 
     void Start()
     {
@@ -25,5 +26,19 @@ public class HonbanBGM : MonoBehaviour
 
         audioSource.clip = newBGM;  // 新しい BGM に変更
         audioSource.Play();          // 新しい BGM を再生
+    }
+
+    public void PlayFinishSE()
+    {
+        if (audioSource == null || finishSE == null)
+        {
+            Debug.LogError("AudioSource または AudioClip が設定されていません。");
+        }
+        audioSource.PlayOneShot(finishSE);
+    }
+
+    public void StopBGM()
+    {
+        audioSource.Stop();
     }
 }
