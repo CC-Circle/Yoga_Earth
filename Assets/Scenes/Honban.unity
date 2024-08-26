@@ -3302,7 +3302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floatingObstaclePrefab: {fileID: 6351068900760099042, guid: 6da7efd4842084e07b48dc5b3df48960, type: 3}
-  spawnInterval: 3
+  spawnInterval: 40
   spawnProbability: 1
   waittime: 7
   durasion_rain: 10
