@@ -34,6 +34,10 @@ public class rain_cloud_move : MonoBehaviour
 
     private bool isHitTree = false;
 
+    private GameObject mainCamera;
+    private ScreenWaterEffect screenWaterEffectScript;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +49,9 @@ public class rain_cloud_move : MonoBehaviour
 
         TimerObj = GameObject.Find("Timer");
         timerScript = TimerObj.GetComponent<Timer>();
+
+        mainCamera = GameObject.Find("Main Camera");
+        screenWaterEffectScript = mainCamera.GetComponent<ScreenWaterEffect>();
     }
 
     // Update is called once per frame
@@ -60,8 +67,6 @@ public class rain_cloud_move : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-
     }
 
     IEnumerator ExecuteAtRandomIntervals()
@@ -130,7 +135,8 @@ public class rain_cloud_move : MonoBehaviour
             if (!isHitTree)
             {
                 timerScript.PenaltyTime(10);
-                Debug.Log($"Hittag{other.gameObject.tag}");
+                //Debug.Log($"Hittag{other.gameObject.tag}");
+                screenWaterEffectScript.StartCoroutine(screenWaterEffectScript.SetEffectActive());
             }
             isHitTree = true;
         }
