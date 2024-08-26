@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 //using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
+using Unity.VisualScripting;
+
 //using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,6 +30,11 @@ public class Tutorial : MonoBehaviour
 
     private FloatingObstacleSpawner floatingObstacleSpawner;
 
+    [SerializeField] private Image derection1;
+    [SerializeField] private Image derection2;
+    [SerializeField] private Image derection3;
+    [SerializeField] private Image derection4;
+
 
 
     // Start is called before the first frame update
@@ -39,6 +46,13 @@ public class Tutorial : MonoBehaviour
 
         rightGoal.enabled = false;
         leftGoal.enabled = false;
+
+        derection1.enabled = false;
+        derection2.enabled = false;
+        derection3.enabled = false;
+        derection4.enabled = false;
+        derectionText.text = "";
+
     }
 
     // Update is called once per frame
@@ -47,7 +61,8 @@ public class Tutorial : MonoBehaviour
         if (firstProgressStarted == false)
         {
             firstProgressStarted = true;
-            derectionText.text = "Pose as a tree and stretch the tree on the screen!";
+            //derectionText.text = "Pose as a tree and stretch the tree on the screen!";
+            derection1.enabled = true;
             Debug.Log("Starting FirstProgress coroutine.");
             StartCoroutine(FirstProgress());
         }
@@ -56,7 +71,9 @@ public class Tutorial : MonoBehaviour
         {
             rightGoal.enabled = true;
             leftGoal.enabled = true;
-            derectionText.text = "Tilt your body to tilt the tree left or right in the screen!";
+            //derectionText.text = "Tilt your body to tilt the tree left or right in the screen!";
+            derection1.enabled = false;
+            derection2.enabled = true;
             timerText.text = "";
             //Debug.Log(set_segment.top_position.x);
             if (set_segment.top_position.x > 2.5f)
@@ -85,7 +102,9 @@ public class Tutorial : MonoBehaviour
         if (secondProgressFinished == true && thirdProgressStarted == false)
         {
             thirdProgressStarted = true;
-            derectionText.text = "Let's extend the tree while avoiding obstacles!";
+            //derectionText.text = "Let's extend the tree while avoiding obstacles!";
+            derection2.enabled = false;
+            derection3.enabled = true;
             StartCoroutine(ThirdProgress());
             StartCoroutine(floatingObstacleSpawner.ExecuteAtRandomIntervals());
         }
@@ -94,7 +113,9 @@ public class Tutorial : MonoBehaviour
             //チュートリアル終了
             Debug.Log("Tutorial Finished");
             timerText.text = "";
-            derectionText.text = "Tutorial Finished!";
+            //derectionText.text = "Tutorial Finished!";
+            derection3.enabled = false;
+            derection4.enabled = true;
             StartCoroutine(ToTitleScene());
         }
 
