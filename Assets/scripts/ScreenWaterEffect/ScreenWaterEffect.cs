@@ -20,6 +20,9 @@ public class ScreenWaterEffect : MonoBehaviour
 
     public static bool isEffectActive = false; // エフェクトのオン/オフ状態を管理
 
+    private AudioSource audioSource;
+    private AudioClip waterDropSE;
+
     // Materialプロパティ
     Material material
     {
@@ -37,6 +40,7 @@ public class ScreenWaterEffect : MonoBehaviour
     void Start()
     {
         isEffectActive = false;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // 無効化時の処理
@@ -84,12 +88,17 @@ public class ScreenWaterEffect : MonoBehaviour
     public IEnumerator SetEffectActive()
     {
         isEffectActive = true;
-        for (int i = 0; i < 50; i++)
+        audioSource.Play();
+
+        for (int i = 0; i < 100; i++)
         {
             yield return new WaitForSeconds(0.1f);
-            Distortion += 1.3f;
+            Distortion += 0.7f;
+            audioSource.volume -= 0.01f;
         }
         isEffectActive = false;
         Distortion = 8.0f;
+        audioSource.volume = 1.0f;
+        audioSource.Stop();
     }
 }
