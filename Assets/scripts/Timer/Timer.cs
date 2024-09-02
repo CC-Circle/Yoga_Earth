@@ -2,7 +2,8 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using System.Threading;
-
+using UnityEngine.UI;
+using DG.Tweening;
 public class Timer : MonoBehaviour
 {
     [SerializeField] private int timeLimit = 10; // タイマーの上限時間
@@ -19,6 +20,10 @@ public class Timer : MonoBehaviour
     [SerializeField] private GameObject sampleBGMObj;
     private HonbanBGM honbanBGM;
 
+    [SerializeField] private Image DamageImg;
+
+    private Camera mainCamera;
+
 
     void Start()
     {
@@ -30,6 +35,10 @@ public class Timer : MonoBehaviour
         set_segmentScript.enabled = false;
 
         honbanBGM = sampleBGMObj.GetComponent<HonbanBGM>();
+
+        DamageImg.color = Color.clear;
+
+        mainCamera = Camera.main;
     }
 
     void Update()
@@ -54,6 +63,8 @@ public class Timer : MonoBehaviour
         {
             AddBonusTime(10);
         }
+
+        DamageImg.color = Color.Lerp(DamageImg.color, Color.clear, Time.deltaTime);
     }
 
     IEnumerator Countdown()
@@ -118,6 +129,8 @@ public class Timer : MonoBehaviour
     public void PenaltyTime(int penaltyTime)
     {
         //Debug.Log("PenaltyTime");
+        DamageImg.color = new Color(0.7f, 0, 0, 0.7f);
+        Shake(2, 2, 0.25f);
         StartCoroutine(TextColorRed());
         if (GetRemainingTime() - penaltyTime <= 0)
         {
@@ -135,5 +148,24 @@ public class Timer : MonoBehaviour
         timerText.color = Color.red;
         yield return new WaitForSeconds(1);
         timerText.color = Color.white;
+    }
+
+    public void Shake(float width, int count, float duration)
+    {
+        var camera = Camera.main.transform;
+        var seq = DOTween.Sequence();
+        // 振れ演出の片道の揺れ分の時間
+        var partDuration = duration / count / 2f;
+        // 振れ幅の半分の値
+        var widthHalf = width / 2f;
+        // 往復回数-1回分の振動演出を作る
+        for (int i = 0; i < count - 1; i++)
+        {
+            seq.Append(camera.DOLocalRotate(new Vector3(-widthHalf, 0f), partDuration));
+            seq.Append(camera.DOLocalRotate(new Vector3(widthHalf, 0f), partDuration));
+        }
+        // 最後の揺れは元の角度に戻す工程とする
+        seq.Append(camera.DOLocalRotate(new Vector3(-widthHalf, 0f), partDuration));
+        seq.Append(camera.DOLocalRotate(Vector3.zero, partDuration));
     }
 }
