@@ -76,7 +76,7 @@ public class Receive_Data : MonoBehaviour
         if (isCenterHuman)
         {
             CenterHumanCnt++;
-            gaugeValue += 0.05f;
+            gaugeValue += 0.5f;
             rectTransform.sizeDelta = new Vector2(40, gaugeValue);
             rectTransform.localPosition = new Vector3(2.3f, IncreaseGaugeLinear(gaugeValue), 0);
         }
