@@ -32,6 +32,10 @@ public class Receive_Data : MonoBehaviour
     [SerializeField] private Image gauge4;
     [SerializeField] private Image gauge5;
 
+    private RectTransform rectTransform;
+
+    private float gaugeValue = 0.0f;
+
     void Start()
     {
         isCenterHuman = false;
@@ -53,16 +57,18 @@ public class Receive_Data : MonoBehaviour
 
         debugText.text = "0";
 
-        gauge1.enabled = false;
+        gauge1.enabled = true;
         gauge2.enabled = false;
         gauge3.enabled = false;
         gauge4.enabled = false;
         gauge5.enabled = false;
+
+        rectTransform = gauge1.GetComponent<RectTransform>();
     }
 
     void Update()
     {
-        if (CenterHumanCnt > 500)
+        if (gaugeValue >= 124)
         {
             Debug.Log("Center Human");
             UnityEngine.SceneManagement.SceneManager.LoadScene("Tutorial");
@@ -70,12 +76,15 @@ public class Receive_Data : MonoBehaviour
         if (isCenterHuman)
         {
             CenterHumanCnt++;
+            gaugeValue += 0.5f;
+            rectTransform.sizeDelta = new Vector2(40, gaugeValue);
+            rectTransform.localPosition = new Vector3(2.3f, IncreaseGaugeLinear(gaugeValue), 0);
         }
         else
         {
-            if (CenterHumanCnt > 100)
+            if (gaugeValue > 0.0f)
             {
-                CenterHumanCnt -= 100;
+                gaugeValue -= 0.01f;
             }
         }
 
@@ -85,6 +94,8 @@ public class Receive_Data : MonoBehaviour
             debugText.text = CenterHumanCnt.ToString();
         }
 
+
+        /*
         if (CenterHumanCnt == 100)
         {
             gauge1.enabled = true;
@@ -105,6 +116,7 @@ public class Receive_Data : MonoBehaviour
         {
             gauge5.enabled = true;
         }
+        */
 
         //もし1キーが押されたら
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -122,6 +134,11 @@ public class Receive_Data : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.LoadScene("Honban");
         }
 
+    }
+
+    private float IncreaseGaugeLinear(float x)
+    {
+        return 0.5f * x - 61.0f;
     }
 
     // データ受信時の処理
