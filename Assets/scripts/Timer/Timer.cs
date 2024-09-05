@@ -28,6 +28,9 @@ public class Timer : MonoBehaviour
 
     private AppleSpawner appleSpawnerScript;
 
+    [SerializeField] private GameObject appleTreeSpawnerObj;
+    private AppleTreeSpawner appleTreeSpawnerScript;
+
 
     void Start()
     {
@@ -45,6 +48,7 @@ public class Timer : MonoBehaviour
         mainCamera = Camera.main;
 
         appleSpawnerScript = appleSpawnerObj.GetComponent<AppleSpawner>();
+        appleTreeSpawnerScript = appleTreeSpawnerObj.GetComponent<AppleTreeSpawner>();
     }
 
     void Update()
@@ -148,6 +152,7 @@ public class Timer : MonoBehaviour
         {
             Shake(2, 2, 0.25f);
             DamageImg.color = new Color(0.5f, 1.0f, 0, 0.4f);
+            appleTreeSpawnerScript.CreateAppleTree(30);
             return;
         }
         DamageImg.color = new Color(0.7f, 0, 0, 0.7f);
