@@ -24,6 +24,10 @@ public class Timer : MonoBehaviour
 
     private Camera mainCamera;
 
+    [SerializeField] private GameObject appleSpawnerObj;
+
+    private AppleSpawner appleSpawnerScript;
+
 
     void Start()
     {
@@ -39,6 +43,8 @@ public class Timer : MonoBehaviour
         DamageImg.color = Color.clear;
 
         mainCamera = Camera.main;
+
+        appleSpawnerScript = appleSpawnerObj.GetComponent<AppleSpawner>();
     }
 
     void Update()
@@ -92,6 +98,8 @@ public class Timer : MonoBehaviour
         set_segment set_segmentScript = set_segment_obj.GetComponent<set_segment>();
         set_segmentScript.enabled = true;
 
+        int appleTime = 0;
+
         // currentTime が timeLimit に達するまでループ
         while (currentTime < timeLimit)
         {
@@ -101,6 +109,12 @@ public class Timer : MonoBehaviour
             // 時間をカウント
             currentTime++;
             //Debug.Log("Time: " + currentTime);
+
+            appleTime++;
+            if (appleTime != 0 && appleTime % 10 == 0)
+            {
+                appleSpawnerScript.CreateApple();
+            }
         }
         StopCoroutine(StartTimer());
 
@@ -129,9 +143,17 @@ public class Timer : MonoBehaviour
     public void PenaltyTime(int penaltyTime)
     {
         //Debug.Log("PenaltyTime");
+        bool isApple = appleSpawnerScript.DeleteApple();
+        if (isApple)
+        {
+            Shake(2, 2, 0.25f);
+            DamageImg.color = new Color(0.5f, 1.0f, 0, 0.4f);
+            return;
+        }
         DamageImg.color = new Color(0.7f, 0, 0, 0.7f);
         Shake(2, 2, 0.25f);
         StartCoroutine(TextColorRed());
+
         if (GetRemainingTime() - penaltyTime <= 0)
         {
             currentTime = timeLimit;
