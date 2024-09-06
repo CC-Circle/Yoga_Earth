@@ -31,6 +31,9 @@ public class Timer : MonoBehaviour
     [SerializeField] private GameObject appleTreeSpawnerObj;
     private AppleTreeSpawner appleTreeSpawnerScript;
 
+    [SerializeField] private int appleTreeCnt = 10;
+    [SerializeField] private int appleGrowInterval = 10;
+
 
     void Start()
     {
@@ -115,15 +118,17 @@ public class Timer : MonoBehaviour
             //Debug.Log("Time: " + currentTime);
 
             appleTime++;
-            if (appleTime != 0 && appleTime % 10 == 0)
+            if (appleTime == appleGrowInterval)
             {
                 appleSpawnerScript.CreateApple();
+                appleTime = 0;
             }
         }
         StopCoroutine(StartTimer());
 
         // タイマーが終了した時の処理
         Debug.Log("Time's up!");
+        Debug.Log("End AppleTreeCnt: " + AppleTreeSpawner.appleTreeCnt);
         honbanBGM.StopBGM();
         honbanBGM.PlayFinishSE();
         isTimeUp = true;
@@ -152,7 +157,7 @@ public class Timer : MonoBehaviour
         {
             Shake(2, 2, 0.25f);
             DamageImg.color = new Color(0.5f, 1.0f, 0, 0.4f);
-            appleTreeSpawnerScript.CreateAppleTree(30);
+            appleTreeSpawnerScript.CreateAppleTree(appleTreeCnt);
             return;
         }
         DamageImg.color = new Color(0.7f, 0, 0, 0.7f);

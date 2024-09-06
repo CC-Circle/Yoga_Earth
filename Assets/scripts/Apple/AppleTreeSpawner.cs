@@ -16,6 +16,9 @@ public class AppleTreeSpawner : MonoBehaviour
     private Terrain terrain;
 
     private List<GameObject> appleTreePrefabs = new List<GameObject>();
+
+    public static int appleTreeCnt = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,12 +27,35 @@ public class AppleTreeSpawner : MonoBehaviour
         appleTreePrefabs.Add(appleTreePrefab2);
         appleTreePrefabs.Add(appleTreePrefab3);
         appleTreePrefabs.Add(appleTreePrefab4);
+
+        Debug.Log("Start appleTreeCnt: " + appleTreeCnt);
+        if (appleTreeCnt > 0)
+        {
+            for (int i = 0; i < appleTreeCnt; i++)
+            {
+                // AppleTreeの生成位置をランダムに決定
+                Vector3 appleTreePosition = new Vector3(Random.Range(appleTreeArea1.transform.position.x, appleTreeArea2.transform.position.x), 0.0f, Random.Range(appleTreeArea1.transform.position.z, appleTreeArea2.transform.position.z));
+
+                // AppleTreeの生成位置の高さを取得
+                appleTreePosition.y = GetHeightAtPosition(appleTreePosition.x, appleTreePosition.z);
+
+                // AppleTreeを生成
+                int randomNum = Random.Range(0, 3);
+                GameObject randomAppleTreePrefab = appleTreePrefabs[randomNum];
+                GameObject appleTreeInstance = Instantiate(randomAppleTreePrefab, appleTreePosition, Quaternion.identity);
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        // Rキーを押すとAppleTreeを削除
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Debug.Log("Delete AppleTreeCnt: " + appleTreeCnt);
+            appleTreeCnt = 0;
+        }
     }
 
     private bool AppleTreeAreaCheck(Vector3 appleTreePosition)
@@ -70,6 +96,7 @@ public class AppleTreeSpawner : MonoBehaviour
             }
             */
         }
+        appleTreeCnt += treeNum;
     }
 
     private float GetHeightAtPosition(float x, float z)

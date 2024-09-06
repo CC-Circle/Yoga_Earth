@@ -133,7 +133,6 @@ public class Receive_Data : MonoBehaviour
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("Honban");
         }
-
     }
 
     private float IncreaseGaugeLinear(float x)
