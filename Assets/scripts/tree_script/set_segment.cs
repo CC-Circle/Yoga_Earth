@@ -30,6 +30,9 @@ public class set_segment : MonoBehaviour
     nobiru_cube nobiru_class;
     public Transform parentTran;
 
+    //public static ArrayList<ArrayList<Vector3>> list_vertis = new ArrayList<ArrayList<Vector3>>();
+
+
     void Start()
     {
 
@@ -72,7 +75,19 @@ public class set_segment : MonoBehaviour
                 branch_count++;
                 obj.transform.SetParent(parentTran);
 
+                save_tree_data.save_segm();
+                //Debug.Log("setsegm");
+                //foreach (var item in save_tree_data.list_zahyo)
+                //{
+                    //Debug.Log(item);
+                //}
 
+                //foreach (var item in collection)
+                //{
+
+                //}
+                //
+                //
             }
 
 

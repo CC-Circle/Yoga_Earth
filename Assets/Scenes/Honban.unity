@@ -345,6 +345,8 @@ MonoBehaviour:
   DamageImg: {fileID: 1071173873}
   appleSpawnerObj: {fileID: 2045642849}
   appleTreeSpawnerObj: {fileID: 1859773728}
+  appleTreeCnt: 10
+  appleGrowInterval: 10
 --- !u!114 &36362962
 MonoBehaviour:
   m_ObjectHideFlags: 0

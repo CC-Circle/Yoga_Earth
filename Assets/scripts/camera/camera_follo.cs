@@ -47,6 +47,7 @@ public class camera_follo : MonoBehaviour
 
             // スコア表示のカメラ移動のプログラムを呼び出す
             MoveCameraForScoreDisplay();
+            
         }
         else
         {
@@ -55,9 +56,15 @@ public class camera_follo : MonoBehaviour
 
         if (isMovedCamera == true)
         {
+            
+
+
             // スコア表示のカメラ移動が終わったら、タイトル画面に遷移する
             isMovedCamera = false;
             Debug.Log("スコア表示のカメラ移動が終わった");
+
+
+
             StartCoroutine(ToTitleScene());
         }
 
@@ -132,6 +139,8 @@ public class camera_follo : MonoBehaviour
 
     IEnumerator ToTitleScene()
     {
+        
+
         yield return new WaitForSeconds(5);
         SceneManager.LoadScene("Title");
     }

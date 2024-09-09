@@ -18,6 +18,7 @@ public class Get_Score : MonoBehaviour
     void Start()
     {
         save_score = GameObject.Find("Save_Score");
+        
         // score_object = GameObject.Find("Text");
         // score = save_score.GetComponent<SaveScore>().GetTopScores();
         // Debug.Log("score");
