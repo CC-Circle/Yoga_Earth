@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AppleTreeSpawner : MonoBehaviour
+public class TutorialAppleTreeSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject appleTreePrefab;
     [SerializeField] private GameObject appleTreePrefab2;
@@ -17,7 +17,7 @@ public class AppleTreeSpawner : MonoBehaviour
 
     private List<GameObject> appleTreePrefabs = new List<GameObject>();
 
-    //public static int appleTreeCnt = 0;
+    public static int appleTreeCnt = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -28,10 +28,10 @@ public class AppleTreeSpawner : MonoBehaviour
         appleTreePrefabs.Add(appleTreePrefab3);
         appleTreePrefabs.Add(appleTreePrefab4);
 
-        Debug.Log("Start appleTreeCnt: " + TutorialAppleTreeSpawner.appleTreeCnt);
-        if (TutorialAppleTreeSpawner.appleTreeCnt > 0)
+        Debug.Log("Start appleTreeCnt: " + appleTreeCnt);
+        if (appleTreeCnt > 0)
         {
-            for (int i = 0; i < TutorialAppleTreeSpawner.appleTreeCnt; i++)
+            for (int i = 0; i < appleTreeCnt; i++)
             {
                 // AppleTreeの生成位置をランダムに決定
                 Vector3 appleTreePosition = new Vector3(Random.Range(appleTreeArea1.transform.position.x, appleTreeArea2.transform.position.x), 0.0f, Random.Range(appleTreeArea1.transform.position.z, appleTreeArea2.transform.position.z));
@@ -53,8 +53,8 @@ public class AppleTreeSpawner : MonoBehaviour
         // Rキーを押すとAppleTreeを削除
         if (Input.GetKeyDown(KeyCode.R))
         {
-            Debug.Log("Delete AppleTreeCnt: " + TutorialAppleTreeSpawner.appleTreeCnt);
-            TutorialAppleTreeSpawner.appleTreeCnt = 0;
+            Debug.Log("Delete AppleTreeCnt: " + appleTreeCnt);
+            appleTreeCnt = 0;
         }
     }
 
@@ -96,13 +96,13 @@ public class AppleTreeSpawner : MonoBehaviour
             }
             */
         }
-        TutorialAppleTreeSpawner.appleTreeCnt += treeNum;
+        appleTreeCnt += treeNum;
     }
 
     private float GetHeightAtPosition(float x, float z)
     {
         // 高さを取得
         float height = terrain.SampleHeight(new Vector3(x, 0, z));
-        return height;
+        return height - 21.5f;
     }
 }

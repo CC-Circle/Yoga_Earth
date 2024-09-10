@@ -34,6 +34,10 @@ public class Receive_Data : MonoBehaviour
 
     private RectTransform rectTransform;
 
+    [SerializeField] private GameObject gaugeObject;
+
+    private Transform gaugeTransform;
+
     private float gaugeValue = 0.0f;
 
     public static bool isJapanese = true;
@@ -61,20 +65,22 @@ public class Receive_Data : MonoBehaviour
 
         debugText.text = "0";
 
-        gauge1.enabled = true;
+        //gauge1.enabled = true;
+        gauge1.enabled = false;
         gauge2.enabled = false;
         gauge3.enabled = false;
         gauge4.enabled = false;
         gauge5.enabled = false;
 
         rectTransform = gauge1.GetComponent<RectTransform>();
+        gaugeTransform = gaugeObject.GetComponent<Transform>();
 
         isJapanese = true;
     }
 
     void Update()
     {
-        if (gaugeValue >= 124)
+        if (gaugeValue >= 22)
         {
             Debug.Log("Center Human");
             UnityEngine.SceneManagement.SceneManager.LoadScene("Tutorial");
@@ -82,9 +88,11 @@ public class Receive_Data : MonoBehaviour
         if (isCenterHuman)
         {
             CenterHumanCnt++;
-            gaugeValue += 0.5f;
-            rectTransform.sizeDelta = new Vector2(40, gaugeValue);
-            rectTransform.localPosition = new Vector3(2.3f, IncreaseGaugeLinear(gaugeValue), 0);
+            gaugeValue += 0.05f;
+            //rectTransform.sizeDelta = new Vector2(40, gaugeValue);
+            //rectTransform.localPosition = new Vector3(2.3f, IncreaseGaugeLinear(gaugeValue), 0);
+            gaugeTransform.localScale = new Vector3(7, gaugeValue, 0);
+            gaugeTransform.localPosition = new Vector3(3.3f, IncreaseGaugeLinear(gaugeValue), 52f);
         }
         else
         {
@@ -151,7 +159,8 @@ public class Receive_Data : MonoBehaviour
 
     private float IncreaseGaugeLinear(float x)
     {
-        return 0.5f * x - 61.0f;
+        //return 0.5f * x - 61.0f;
+        return 0.5f * x + 4.2f;
     }
 
     // データ受信時の処理

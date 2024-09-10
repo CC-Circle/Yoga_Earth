@@ -131,7 +131,7 @@ public class Timer : MonoBehaviour
 
         // タイマーが終了した時の処理
         Debug.Log("Time's up!");
-        Debug.Log("End AppleTreeCnt: " + AppleTreeSpawner.appleTreeCnt);
+        Debug.Log("End AppleTreeCnt: " + TutorialAppleTreeSpawner.appleTreeCnt);
         honbanBGM.StopBGM();
         honbanBGM.PlayFinishSE();
         isTimeUp = true;
