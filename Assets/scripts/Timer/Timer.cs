@@ -9,7 +9,8 @@ public class Timer : MonoBehaviour
     [SerializeField] private int timeLimit = 10; // タイマーの上限時間
     private int currentTime = 0;
     [SerializeField] private TextMeshProUGUI timerText;
-    [SerializeField] private TextMeshProUGUI countdownText;
+    //[SerializeField] private TextMeshProUGUI countdownText;
+    [SerializeField] private Image[] countdownImages;
 
     [SerializeField] private GameObject set_segment_obj;
 
@@ -37,6 +38,14 @@ public class Timer : MonoBehaviour
 
     void Start()
     {
+        foreach (var countdownImage in countdownImages)
+        {
+            if (countdownImage != null)
+            {
+                countdownImage.enabled = false;
+            }
+        }
+
         isTimeUp = false;
         isGameStart = false;
         StartCoroutine(StartTimer());
@@ -80,27 +89,21 @@ public class Timer : MonoBehaviour
         DamageImg.color = Color.Lerp(DamageImg.color, Color.clear, Time.deltaTime);
     }
 
-    IEnumerator Countdown()
-    {
-        for (int i = 3; i > 0; i--)
-        {
-            countdownText.text = i.ToString();
-            Debug.Log(i);
-            yield return new WaitForSeconds(1);
-        }
-    }
-
     IEnumerator StartTimer()
     {
         for (int i = 3; i > 0; i--)
         {
-            countdownText.text = i.ToString();
+            //countdownText.text = i.ToString();
+            countdownImages[i].enabled = true;
             Debug.Log(i);
             yield return new WaitForSeconds(1);
+            countdownImages[i].enabled = false;
         }
-        countdownText.text = "Start!";
+        //countdownText.text = "Start!";
+        countdownImages[0].enabled = true;
         yield return new WaitForSeconds(1);
-        countdownText.text = "";
+        //countdownText.text = "";
+        countdownImages[0].enabled = false;
         isGameStart = true;
         set_segment set_segmentScript = set_segment_obj.GetComponent<set_segment>();
         set_segmentScript.enabled = true;
