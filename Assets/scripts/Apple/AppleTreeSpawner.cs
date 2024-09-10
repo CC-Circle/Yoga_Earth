@@ -103,6 +103,6 @@ public class AppleTreeSpawner : MonoBehaviour
     {
         // 高さを取得
         float height = terrain.SampleHeight(new Vector3(x, 0, z));
-        return height;
+        return height - 21.5f;
     }
 }
