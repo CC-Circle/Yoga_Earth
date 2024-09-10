@@ -1,8 +1,7 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
 
-public class set_segment : MonoBehaviour
+public class set_segment_title : MonoBehaviour
 {
     [SerializeField] float grow_speed = 0.2f;
     public static float grow_speed_pub;
@@ -76,10 +75,7 @@ public class set_segment : MonoBehaviour
                 branch_count++;
                 obj.transform.SetParent(parentTran);
 
-                if (SceneManager.GetActiveScene().name == "Honban")
-                {
-                    save_tree_data.save_segm();
-                }
+                //save_tree_data.save_segm();
                 //Debug.Log("setsegm");
                 //foreach (var item in save_tree_data.list_zahyo)
                 //{
