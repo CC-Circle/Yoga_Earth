@@ -38,6 +38,8 @@ public class Receive_Data : MonoBehaviour
 
     void Start()
     {
+        
+
         isCenterHuman = false;
         CenterHumanCnt = 0;
         // サーバーのIPアドレスを取得

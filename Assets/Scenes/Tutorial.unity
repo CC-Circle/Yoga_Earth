@@ -5094,6 +5094,7 @@ GameObject:
   - component: {fileID: 1854217191}
   - component: {fileID: 1854217192}
   - component: {fileID: 1854217193}
+  - component: {fileID: 1854217194}
   m_Layer: 0
   m_Name: Set_segment
   m_TagString: Untagged
@@ -5144,6 +5145,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 001adbd18236449739ff1481df4f7447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1854217194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854217190}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12a76c9bb14ef42dca5308b92321bcb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grow_speed: 0.1
+  is_key: 0
+  cube_obj: {fileID: 2986815384033673886, guid: e8dfaf162af59407487da7270d35d5d4, type: 3}
+  parentTran: {fileID: 0}
 --- !u!850595691 &1877351756
 LightingSettings:
   m_ObjectHideFlags: 0

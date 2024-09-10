@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class nobiru_cube : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class nobiru_cube : MonoBehaviour
 
     public bool is_limit = false;
 
+    //public static List<Vector3> list_zahyo = new List<Vector3>();
+
+
     void Start()
     {
         is_key = set_segment.is_key_pub;
@@ -28,6 +32,7 @@ public class nobiru_cube : MonoBehaviour
 
         is_limit = false;
         growthLimit = growadd;
+        
     }
 
     void Update()
@@ -77,8 +82,7 @@ public class nobiru_cube : MonoBehaviour
                     }
                     else
                     {
-                        //growthDirection = 0.0f;
-
+                        
                         if (set_segment.top_position.x > right_limit)
                         {
                             growthDirection = 0.0f;
