@@ -36,9 +36,11 @@ public class Receive_Data : MonoBehaviour
 
     private float gaugeValue = 0.0f;
 
+    public static bool isJapanese = true;
+
     void Start()
     {
-        
+
 
         isCenterHuman = false;
         CenterHumanCnt = 0;
@@ -66,6 +68,8 @@ public class Receive_Data : MonoBehaviour
         gauge5.enabled = false;
 
         rectTransform = gauge1.GetComponent<RectTransform>();
+
+        isJapanese = true;
     }
 
     void Update()
@@ -96,6 +100,14 @@ public class Receive_Data : MonoBehaviour
             debugText.text = CenterHumanCnt.ToString();
         }
 
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            isJapanese = true;
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            isJapanese = false;
+        }
 
         /*
         if (CenterHumanCnt == 100)

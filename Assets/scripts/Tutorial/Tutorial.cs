@@ -35,6 +35,10 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private Image derection3;
     [SerializeField] private Image derection4;
 
+    [SerializeField] private Image[] englishImages;
+
+    //public static bool isJapanese = true;
+
 
 
     // Start is called before the first frame update
@@ -53,16 +57,45 @@ public class Tutorial : MonoBehaviour
         derection4.enabled = false;
         derectionText.text = "";
 
+        foreach (var englishImage in englishImages)
+        {
+            if (englishImage != null)
+            {
+                englishImage.enabled = false;
+            }
+        }
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            Receive_Data.isJapanese = true;
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Receive_Data.isJapanese = false;
+        }
+        */
+
+
         if (firstProgressStarted == false)
         {
             firstProgressStarted = true;
             //derectionText.text = "Pose as a tree and stretch the tree on the screen!";
-            derection1.enabled = true;
+            if (Receive_Data.isJapanese == true)
+            {
+                englishImages[0].enabled = false;
+                derection1.enabled = true;
+            }
+            else
+            {
+                derection1.enabled = false;
+                englishImages[0].enabled = true;
+            }
             Debug.Log("Starting FirstProgress coroutine.");
             StartCoroutine(FirstProgress());
         }
@@ -72,8 +105,18 @@ public class Tutorial : MonoBehaviour
             rightGoal.enabled = true;
             leftGoal.enabled = true;
             //derectionText.text = "Tilt your body to tilt the tree left or right in the screen!";
-            derection1.enabled = false;
-            derection2.enabled = true;
+            if (Receive_Data.isJapanese == true)
+            {
+                englishImages[0].enabled = false;
+                derection1.enabled = false;
+                derection2.enabled = true;
+            }
+            else
+            {
+                derection1.enabled = false;
+                englishImages[0].enabled = false;
+                englishImages[1].enabled = true;
+            }
             timerText.text = "";
             //Debug.Log(set_segment.top_position.x);
             if (set_segment.top_position.x > 2.5f)
@@ -103,8 +146,18 @@ public class Tutorial : MonoBehaviour
         {
             thirdProgressStarted = true;
             //derectionText.text = "Let's extend the tree while avoiding obstacles!";
-            derection2.enabled = false;
-            derection3.enabled = true;
+            if (Receive_Data.isJapanese == true)
+            {
+                englishImages[1].enabled = false;
+                derection2.enabled = false;
+                derection3.enabled = true;
+            }
+            else
+            {
+                derection2.enabled = false;
+                englishImages[1].enabled = false;
+                englishImages[2].enabled = true;
+            }
             StartCoroutine(ThirdProgress());
             StartCoroutine(floatingObstacleSpawner.ExecuteAtRandomIntervals());
         }
@@ -114,8 +167,18 @@ public class Tutorial : MonoBehaviour
             Debug.Log("Tutorial Finished");
             timerText.text = "";
             //derectionText.text = "Tutorial Finished!";
-            derection3.enabled = false;
-            derection4.enabled = true;
+            if (Receive_Data.isJapanese == true)
+            {
+                englishImages[2].enabled = false;
+                derection3.enabled = false;
+                derection4.enabled = true;
+            }
+            else
+            {
+                derection3.enabled = false;
+                englishImages[2].enabled = false;
+                englishImages[3].enabled = true;
+            }
             StartCoroutine(ToTitleScene());
         }
 
