@@ -25,8 +25,8 @@ public class save_tree_data : MonoBehaviour
     float y_offset = -10f;
     float z_offset = 40f;
 
-    int[] offset_Arrays = { 1, 10, 20, 50 , -30, 6 , -20, 40, -15, -10};
-    int[] offset_Arrays_z = { 1, 10, 20, 50, -30, 6, -20, 40, -15, -10 };
+    int[] offset_Arrays = { -50, 15, 30, 50 , -30, -15};
+    int[] offset_Arrays_z = { 40, 40, 40, 40, 40,40 };
 
 
     void Start()
@@ -47,7 +47,7 @@ public class save_tree_data : MonoBehaviour
 
             // 高さを取得
             float height = terrain.SampleHeight(new Vector3(x_offs, 0, z_offs));
-            height -= 4.7f;
+            height -= 21.5f;
 
             Debug.Log(height);
             
@@ -76,14 +76,14 @@ public class save_tree_data : MonoBehaviour
     public static void save_set_segm()
     {
         list_vertis.Add(new List<Vector3>(list_zahyo)); // コピーを追加
-        if(list_vertis.Count > 10)
+        if(list_vertis.Count > 6)
         {
             int cl_index = 0;
             int cl_count = 0;
             float min_y = 0;
             foreach (var item in list_vertis)
             {
-                if(min_y < item[item.Count-1].y)
+                if(min_y > item[item.Count-1].y)
                 {
                     min_y = item[item.Count - 1].y;
                     cl_index = cl_count;

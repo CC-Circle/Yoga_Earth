@@ -51,7 +51,12 @@ public class Apple : MonoBehaviour
     public IEnumerator WaitDeleteApple(float time)
     {
         yield return new WaitForSeconds(time);
-        Destroy(gameObject);
+        
+            if (gameObject != null)
+            {
+                Destroy(gameObject);
+            }
+        yield break;
     }
 
     public bool GetIsGrownApple()

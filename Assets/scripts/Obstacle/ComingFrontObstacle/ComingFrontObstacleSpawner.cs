@@ -16,7 +16,7 @@ public class ComingFrontObstacleSpawner : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
-        StartCoroutine(ExecuteAtRandomIntervals());
+        //StartCoroutine(ExecuteAtRandomIntervals());
     }
 
     void Update()
