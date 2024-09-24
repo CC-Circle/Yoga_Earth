@@ -1,4 +1,5 @@
 # Yoga_Earth
+![MicrosoftTeams-image](https://github.com/user-attachments/assets/5b86a656-8141-42af-9524-11b9acb8e710)
 
 ## キーボード操作一覧
 ### 全シーン共通
